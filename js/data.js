@@ -57,8 +57,7 @@ window.ORION_DATA = {
         { "src": "media/img/mayela-vocal-live.jpeg", "alt": "Orion Live Band - mayela-vocal-live" },
         { "src": "media/img/coco-drums-live.jpeg", "alt": "Orion Live Band - coco-drums-live" },
         { "src": "media/img/jair-guitar-live01.jpeg", "alt": "Orion Live Band - jair-guitar-live01" },
-        { "src": "media/img/jair-guitar-live02.jpeg", "alt": "Orion Live Band - jair-guitar-live02" },
-        { "src": "media/img/raul-keyboards-live.jpg", "alt": "Orion Live Band - raul-keyboards-live" }
+        { "src": "media/img/jair-guitar-live02.jpeg", "alt": "Orion Live Band - jair-guitar-live02" }
     ],
     "contact": {
         "whatsapp": {
@@ -72,10 +71,6 @@ window.ORION_DATA = {
         "facebook": {
             "url": "https://www.facebook.com/profile.php?id=61578739701452",
             "label": "Orion Live Band"
-        },
-        "rider": {
-            "file": "docs/rider-tecnico.pdf",
-            "label": "Descargar Rider Técnico (PDF)"
         }
     }
 };
