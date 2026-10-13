@@ -21,6 +21,131 @@
 <body>
 
     <!-- ============================
+         COSMOS CANVAS (Fondo Estelar, Constelaciones & Nebulosa)
+    ============================= -->
+    <div class="cosmos-background" aria-hidden="true">
+        <div class="cosmos-nebula"></div>
+        <div class="cosmos-stars"></div>
+        <svg class="cosmos-constellations" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="glow-bright" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur1"/>
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur2"/>
+                    <feMerge>
+                        <feMergeNode in="blur2"/>
+                        <feMergeNode in="blur1"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+                <radialGradient id="nebula-m42" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#79C0FF" stop-opacity="0.65"/>
+                    <stop offset="60%" stop-color="#387DBE" stop-opacity="0.22"/>
+                    <stop offset="100%" stop-color="#030508" stop-opacity="0"/>
+                </radialGradient>
+            </defs>
+
+            <!-- Líneas de la Constelación de Orión -->
+            <g class="constellation-lines">
+                <!-- Cabeza (Meissa) a Hombros -->
+                <line x1="800" y1="210" x2="690" y2="290" />
+                <line x1="800" y1="210" x2="910" y2="310" />
+                <!-- Hombros entre sí -->
+                <line x1="690" y1="290" x2="910" y2="310" />
+                <!-- Garrote / Brazo superior -->
+                <line x1="690" y1="290" x2="660" y2="210" />
+                <line x1="660" y1="210" x2="630" y2="140" />
+                <line x1="630" y1="140" x2="670" y2="120" />
+                <!-- Escudo / Arco derecho -->
+                <line x1="910" y1="310" x2="990" y2="340" />
+                <line x1="990" y1="340" x2="1015" y2="400" />
+                <line x1="1015" y1="400" x2="1020" y2="470" />
+                <line x1="1020" y1="470" x2="1005" y2="540" />
+                <line x1="1005" y1="540" x2="975" y2="600" />
+                <!-- Torso hacia el Cinturón -->
+                <line x1="690" y1="290" x2="760" y2="470" />
+                <line x1="910" y1="310" x2="840" y2="490" />
+                <!-- Las 3 Estrellas del Cinturón (Tres Marías) -->
+                <line x1="760" y1="470" x2="800" y2="480" />
+                <line x1="800" y1="480" x2="840" y2="490" />
+                <!-- Espada de Orión y Nebulosa M42 -->
+                <line x1="800" y1="480" x2="796" y2="535" />
+                <line x1="796" y1="535" x2="792" y2="580" />
+                <!-- Cinturón hacia las Piernas / Pies -->
+                <line x1="760" y1="470" x2="720" y2="700" />
+                <line x1="840" y1="490" x2="930" y2="680" />
+                <!-- Conexión inferior entre Pies -->
+                <line x1="720" y1="700" x2="930" y2="680" />
+
+                <!-- Constelación compañera sutil (Tauro / Hyades en lateral izquierdo) -->
+                <line x1="260" y1="220" x2="330" y2="280" opacity="0.4" />
+                <line x1="330" y1="280" x2="410" y2="300" opacity="0.4" />
+                <line x1="330" y1="280" x2="360" y2="370" opacity="0.4" />
+
+                <!-- Constelación compañera sutil (Canis Major / Sirio en lateral inferior derecho) -->
+                <line x1="1250" y1="620" x2="1320" y2="690" opacity="0.4" />
+                <line x1="1320" y1="690" x2="1280" y2="770" opacity="0.4" />
+                <line x1="1320" y1="690" x2="1410" y2="720" opacity="0.4" />
+            </g>
+
+            <!-- Resplandor de la Nebulosa de Orión M42 -->
+            <ellipse cx="796" cy="540" rx="35" ry="25" fill="url(#nebula-m42)" opacity="0.85" />
+
+            <!-- Nodos Estelares de Orión y Estrellas Principales -->
+            <g class="constellation-stars">
+                <!-- Meissa (Cabeza) -->
+                <circle cx="800" cy="210" r="3" class="star star--bright" />
+                
+                <!-- Betelgeuse (Hombro Izquierdo / Alpha Ori - supergigante estelar) -->
+                <circle cx="690" cy="290" r="5.5" class="star star--primary" />
+                <circle cx="690" cy="290" r="9" fill="none" stroke="rgba(255, 215, 180, 0.45)" stroke-width="1" />
+                
+                <!-- Bellatrix (Hombro Derecho / Gamma Ori) -->
+                <circle cx="910" cy="310" r="4.5" class="star star--bright" />
+                
+                <!-- Garrote -->
+                <circle cx="660" cy="210" r="2.2" class="star" />
+                <circle cx="630" cy="140" r="2.5" class="star" />
+                <circle cx="670" cy="120" r="2.2" class="star" />
+                
+                <!-- Escudo -->
+                <circle cx="990" cy="340" r="2.2" class="star" />
+                <circle cx="1015" cy="400" r="2.5" class="star" />
+                <circle cx="1020" cy="470" r="2.2" class="star" />
+                <circle cx="1005" cy="540" r="2" class="star" />
+                <circle cx="975" cy="600" r="2.2" class="star" />
+
+                <!-- Cinturón de Orión: Las 3 Estrellas (Alnitak, Alnilam, Mintaka) -->
+                <circle cx="760" cy="470" r="3.8" class="star star--bright" />
+                <circle cx="800" cy="480" r="4.2" class="star star--primary" />
+                <circle cx="840" cy="490" r="3.8" class="star star--bright" />
+
+                <!-- Espada & M42 -->
+                <circle cx="796" cy="535" r="2.5" class="star star--bright" />
+                <circle cx="792" cy="580" r="3" class="star" />
+
+                <!-- Saiph (Pie Izquierdo / Kappa Ori) -->
+                <circle cx="720" cy="700" r="4.2" class="star star--bright" />
+
+                <!-- Rigel (Pie Derecho / Beta Ori - supergigante azul estelar ultra brillante) -->
+                <circle cx="930" cy="680" r="6" class="star star--primary" />
+                <circle cx="930" cy="680" r="11" fill="none" stroke="rgba(121, 192, 255, 0.5)" stroke-width="1" />
+
+                <!-- Aldebarán (Tauro) en lateral -->
+                <circle cx="410" cy="300" r="4.5" class="star star--bright" opacity="0.65" />
+                <circle cx="330" cy="280" r="2.5" class="star" opacity="0.5" />
+                <circle cx="260" cy="220" r="2.2" class="star" opacity="0.5" />
+                <circle cx="360" cy="370" r="2.2" class="star" opacity="0.5" />
+
+                <!-- Sirio (Canis Major) en lateral -->
+                <circle cx="1320" cy="690" r="5" class="star star--primary" opacity="0.75" />
+                <circle cx="1250" cy="620" r="2.5" class="star" opacity="0.5" />
+                <circle cx="1280" cy="770" r="2.5" class="star" opacity="0.5" />
+                <circle cx="1410" cy="720" r="2.2" class="star" opacity="0.5" />
+            </g>
+        </svg>
+    </div>
+
+    <!-- ============================
          NAVBAR
     ============================= -->
     <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
@@ -39,14 +164,21 @@
 
             <!-- Redes Sociales Omnipresentes en Header -->
             <div class="navbar__social" id="nav-social">
+                <!-- 1. WhatsApp -->
                 <a href="https://wa.me/524771797700?text=Hola%20Orion,%20quiero%20cotizar%20un%20show" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 </a>
+                <!-- 2. Facebook -->
+                <a href="https://www.facebook.com/profile.php?id=61578739701452" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <!-- 3. Instagram -->
                 <a href="https://www.instagram.com/orionliveband/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=61578739701452" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                <!-- 4. Email -->
+                <a href="mailto:jairjjr@gmail.com?subject=Cotizaci%C3%B3n%20Orion%20Live%20Band&body=Hola%20Orion,%20me%20gustar%C3%ADa%20cotizar%20un%20show" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                 </a>
             </div>
 
@@ -232,7 +364,7 @@
 
             <!-- Galería de Fotos -->
             <div class="gallery-grid" id="gallery-container">
-                                                                                <!-- GALLERY_START -->
+                                                                                                                <!-- GALLERY_START -->
                 <a class="gallery-item" href="media/img/claudio-bass-live02.jpeg" onclick="event.preventDefault(); document.getElementById('lightbox-img').src=this.href; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow='hidden';">
                     <img src="media/img/claudio-bass-live02.jpeg" alt="Orion Live Band - claudio-bass-live02" loading="lazy">
                 </a>
@@ -252,6 +384,8 @@
                     <img src="media/img/orion-band-full.jpeg" alt="Orion Live Band - orion-band-full" loading="lazy">
                 </a>
                 <!-- GALLERY_END -->
+
+
 
 
 
@@ -335,7 +469,7 @@
                 </div>
 
                 <div class="contact-block" id="contact-links">
-                    <!-- WhatsApp -->
+                    <!-- 1. WhatsApp -->
                     <a
                         href="https://wa.me/524771797700?text=Hola%20Orion,%20quiero%20cotizar%20un%20show"
                         target="_blank"
@@ -347,7 +481,19 @@
                         Cotiza por WhatsApp
                     </a>
 
-                    <!-- Instagram -->
+                    <!-- 2. Facebook -->
+                    <a
+                        href="https://www.facebook.com/profile.php?id=61578739701452"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-link"
+                        id="contact-facebook"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        Orion Live Band
+                    </a>
+
+                    <!-- 3. Instagram -->
                     <a
                         href="https://www.instagram.com/orionliveband/"
                         target="_blank"
@@ -359,16 +505,14 @@
                         @orionliveband
                     </a>
 
-                    <!-- Facebook -->
+                    <!-- 4. Email -->
                     <a
-                        href="https://www.facebook.com/profile.php?id=61578739701452"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="mailto:jairjjr@gmail.com?subject=Cotizaci%C3%B3n%20Orion%20Live%20Band&body=Hola%20Orion,%20me%20gustar%C3%ADa%20cotizar%20un%20show"
                         class="contact-link"
-                        id="contact-facebook"
+                        id="contact-email"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                        Orion Live Band
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                        jairjjr@gmail.com
                     </a>
                 </div>
             </div>

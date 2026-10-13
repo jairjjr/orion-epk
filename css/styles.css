@@ -1,36 +1,36 @@
 /* ========================================================================
    ORION EPK — Design System
-   Dark Mode absoluto con acentos morado eléctrico
+   Cosmos Minimalista: Obsidiana Espacial, Nebulosa Fría y Luz Estelar
    ======================================================================== */
 
 /* --- Design Tokens --- */
 :root {
     /* Backgrounds */
-    --color-bg-deep:        #030005; /* Negro puro con matiz profundo */
-    --color-bg-surface:     #0A0012;
-    --color-bg-card:        #0D001A;
+    --color-bg-deep:        #030508; /* Obsidiana Espacial Profunda */
+    --color-bg-surface:     #060A10; /* Superficie cósmica */
+    --color-bg-card:        rgba(8, 14, 22, 0.75);
 
-    /* Accent Neon */
-    --color-accent:         #D400FF; /* Morado Neón Brillante */
-    --color-accent-glow:    #F700FF; /* Resplandor Magenta Intenso */
-    --color-accent-dim:     #7000B3;
+    /* Accent Celestial & Nebula Glow */
+    --color-accent:         #FFFFFF; /* Blanco Estelar Puro */
+    --color-accent-glow:    #79C0FF; /* Resplandor Azul Hielo / Nebulosa */
+    --color-accent-dim:     #1F334D; /* Azul pizarra cósmico */
 
     /* Text */
     --color-text-primary:   #FFFFFF;
-    --color-text-body:      #C8B0D6; /* Gris frío con tintes púrpura */
-    --color-text-muted:     #7A6A87;
+    --color-text-body:      #C5D1DE; /* Plata estelar neutro */
+    --color-text-muted:     #748394; /* Gris estelar frío */
 
     /* Glassmorphism */
-    --glass-bg:             rgba(212, 0, 255, 0.05);
-    --glass-border:         rgba(212, 0, 255, 0.3);
-    --glass-bg-hover:       rgba(212, 0, 255, 0.1);
-    --glass-border-hover:   rgba(247, 0, 255, 0.8);
+    --glass-bg:             rgba(255, 255, 255, 0.03);
+    --glass-border:         rgba(255, 255, 255, 0.12);
+    --glass-bg-hover:       rgba(255, 255, 255, 0.07);
+    --glass-border-hover:   rgba(121, 192, 255, 0.55);
 
-    /* Shadows Neon */
-    --shadow-glow:          0 0 15px rgba(212, 0, 255, 0.6), 0 0 30px rgba(212, 0, 255, 0.3);
-    --shadow-glow-intense:  0 0 20px rgba(247, 0, 255, 0.8), 0 0 40px rgba(247, 0, 255, 0.5), 0 0 60px rgba(212, 0, 255, 0.3);
-    --shadow-card:          0 8px 32px rgba(0, 0, 0, 0.8);
-    --text-glow:            0 0 10px rgba(247, 0, 255, 0.8), 0 0 20px rgba(212, 0, 255, 0.5);
+    /* Shadows Celestial */
+    --shadow-glow:          0 0 20px rgba(121, 192, 255, 0.25), 0 0 40px rgba(255, 255, 255, 0.08);
+    --shadow-glow-intense:  0 0 25px rgba(255, 255, 255, 0.5), 0 0 50px rgba(121, 192, 255, 0.35);
+    --shadow-card:          0 12px 36px rgba(0, 0, 0, 0.85);
+    --text-glow:            0 0 14px rgba(255, 255, 255, 0.55), 0 0 30px rgba(121, 192, 255, 0.3);
 
     /* Typography */
     --font-family:          'Montserrat', sans-serif;
@@ -137,10 +137,10 @@ p {
 }
 
 .navbar.scrolled {
-    background: rgba(10, 10, 10, 0.85);
+    background: rgba(3, 5, 8, 0.88);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(123, 44, 191, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar__inner {
@@ -157,11 +157,11 @@ p {
     height: 40px;
     width: auto;
     transition: var(--transition-fast);
-    filter: drop-shadow(0 0 12px rgba(247, 0, 255, 0.6));
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
 .navbar__logo:hover img {
-    filter: drop-shadow(0 0 20px rgba(247, 0, 255, 0.9));
+    filter: drop-shadow(0 0 18px rgba(121, 192, 255, 0.85));
 }
 
 .navbar__links {
@@ -224,10 +224,10 @@ p {
 }
 
 .navbar__social a:hover {
-    color: var(--color-accent-glow);
-    background: rgba(212, 0, 255, 0.1);
+    color: var(--color-text-primary);
+    background: rgba(121, 192, 255, 0.12);
     transform: scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(247, 0, 255, 0.6));
+    filter: drop-shadow(0 0 8px rgba(121, 192, 255, 0.6));
 }
 
 /* Hamburger (mobile) */
@@ -277,8 +277,8 @@ p {
     position: absolute;
     inset: 0;
     background: radial-gradient(
-        ellipse at 50% 0%,
-        rgba(212, 0, 255, 0.25) 0%,
+        ellipse 80% 50% at 50% 15%,
+        rgba(56, 125, 190, 0.22) 0%,
         transparent 70%
     );
     pointer-events: none;
@@ -309,7 +309,7 @@ p {
     width: clamp(220px, 40vw, 380px);
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 24px rgba(247, 0, 255, 0.6));
+    filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 35px rgba(121, 192, 255, 0.35));
     animation: heroLogoFloat 6s ease-in-out infinite;
 }
 
@@ -335,7 +335,7 @@ p {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 2rem;
+    padding: 1rem 2.25rem;
     border-radius: 50px;
     font-family: var(--font-family);
     font-weight: 700;
@@ -344,21 +344,21 @@ p {
     transition: var(--transition-smooth);
     border: none;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
 }
 
 .btn--primary {
-    background: var(--color-accent);
-    color: var(--color-text-primary);
-    box-shadow: var(--shadow-glow);
+    background: #FFFFFF;
+    color: #030508;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.35), 0 0 40px rgba(121, 192, 255, 0.2);
     animation: ctaPulse 3s ease-in-out infinite;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 .btn--primary:hover {
-    background: var(--color-accent-glow);
+    background: #E8F4FF;
+    color: #000000;
     transform: scale(1.05);
-    box-shadow: var(--shadow-glow-intense);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.75), 0 0 50px rgba(121, 192, 255, 0.45);
 }
 
 .btn--primary:active {
@@ -366,8 +366,8 @@ p {
 }
 
 @keyframes ctaPulse {
-    0%, 100% { box-shadow: 0 0 15px rgba(212, 0, 255, 0.6); }
-    50%      { box-shadow: 0 0 25px rgba(247, 0, 255, 0.9); }
+    0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(121, 192, 255, 0.15); }
+    50%      { box-shadow: 0 0 25px rgba(255, 255, 255, 0.55), 0 0 45px rgba(121, 192, 255, 0.3); }
 }
 
 .btn--outline {
@@ -404,6 +404,7 @@ p {
 .section {
     padding: var(--section-padding);
     position: relative;
+    z-index: 1;
 }
 
 .section__header {
@@ -420,7 +421,8 @@ p {
     content: '';
     width: 4px;
     height: 2rem;
-    background: var(--color-accent);
+    background: var(--color-accent-glow);
+    box-shadow: 0 0 10px var(--color-accent-glow);
     border-radius: 2px;
     flex-shrink: 0;
 }
@@ -450,8 +452,8 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     transition: var(--transition-smooth);
 }
 
@@ -500,14 +502,14 @@ p {
     border-radius: 16px;
     padding: 2rem;
     transition: var(--transition-smooth);
-    box-shadow: inset 0 0 20px rgba(212, 0, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 .glass-card:hover {
     transform: translateY(-8px);
     background: var(--glass-bg-hover);
     border-color: var(--glass-border-hover);
-    box-shadow: var(--shadow-glow-intense), inset 0 0 30px rgba(247, 0, 255, 0.1);
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.8), 0 0 25px rgba(121, 192, 255, 0.25), inset 0 0 25px rgba(121, 192, 255, 0.06);
 }
 
 .glass-card__icon {
@@ -592,10 +594,10 @@ p {
 }
 
 .genre-tag:hover {
-    background: rgba(212, 0, 255, 0.15);
+    background: rgba(121, 192, 255, 0.12);
     border-color: var(--color-accent-glow);
     color: var(--color-text-primary);
-    box-shadow: 0 0 10px rgba(212, 0, 255, 0.3);
+    box-shadow: 0 0 10px rgba(121, 192, 255, 0.3);
 }
 
 /* --- Genre Cards Grid (Repertorio) --- */
@@ -614,7 +616,7 @@ p {
     border-radius: 16px;
     padding: 2rem;
     transition: var(--transition-smooth);
-    box-shadow: inset 0 0 20px rgba(212, 0, 255, 0.02);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.02);
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -624,8 +626,8 @@ p {
 .genre-card:hover {
     transform: translateY(-8px);
     background: var(--glass-bg-hover);
-    border-color: var(--color-accent-dim);
-    box-shadow: var(--shadow-glow), inset 0 0 30px rgba(247, 0, 255, 0.1);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.8), 0 0 25px rgba(121, 192, 255, 0.25), inset 0 0 25px rgba(121, 192, 255, 0.05);
 }
 
 .genre-card__title {
@@ -668,6 +670,7 @@ p {
     break-inside: avoid;
     cursor: zoom-in;
     display: block;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .gallery-item img {
@@ -681,7 +684,7 @@ p {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(212, 0, 255, 0);
+    background: rgba(121, 192, 255, 0);
     transition: var(--transition-smooth);
     pointer-events: none;
 }
@@ -691,7 +694,7 @@ p {
 }
 
 .gallery-item:hover::after {
-    background: rgba(212, 0, 255, 0.2);
+    background: rgba(121, 192, 255, 0.15);
 }
 
 /* --- Lightbox Modal --- */
@@ -699,9 +702,9 @@ p {
     position: fixed;
     inset: 0;
     z-index: 2000;
-    background: rgba(3, 0, 5, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(3, 5, 8, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -808,9 +811,11 @@ p {
 .footer {
     text-align: center;
     padding: 2rem 1.5rem;
-    border-top: 1px solid rgba(123, 44, 191, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     font-size: 0.8125rem;
     color: var(--color-text-muted);
+    position: relative;
+    z-index: 1;
 }
 
 /* --- Animations (Intersection Observer) --- */
@@ -831,6 +836,93 @@ p {
 .delay-200 { transition-delay: 0.2s; }
 .delay-300 { transition-delay: 0.3s; }
 .delay-400 { transition-delay: 0.4s; }
+
+/* --- Cosmos Background (Deep Space, Constellations & Nebula) --- */
+.cosmos-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+    background-color: var(--color-bg-deep);
+}
+
+.cosmos-nebula {
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse 90% 55% at 50% 12%, rgba(56, 125, 190, 0.16) 0%, transparent 68%),
+        radial-gradient(ellipse 70% 45% at 85% 65%, rgba(40, 95, 150, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 40% at 15% 75%, rgba(30, 80, 130, 0.08) 0%, transparent 55%),
+        radial-gradient(circle 40% at 50% 50%, rgba(20, 50, 85, 0.06) 0%, transparent 70%);
+}
+
+.cosmos-stars {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(1px 1px at 40px 60px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 120px 240px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 280px 180px, rgba(200,230,255,0.6), transparent),
+        radial-gradient(2px 2px at 420px 90px, rgba(255,255,255,0.85), transparent),
+        radial-gradient(1px 1px at 580px 320px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 720px 140px, rgba(220,240,255,0.75), transparent),
+        radial-gradient(1px 1px at 890px 290px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(2px 2px at 1040px 70px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1px 1px at 1200px 360px, rgba(200,230,255,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 1350px 180px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 180px 520px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 340px 720px, rgba(255,255,255,0.85), transparent),
+        radial-gradient(1px 1px at 520px 610px, rgba(200,230,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 680px 810px, rgba(255,255,255,0.75), transparent),
+        radial-gradient(1px 1px at 850px 680px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 1010px 530px, rgba(255,255,255,0.85), transparent),
+        radial-gradient(1px 1px at 1160px 760px, rgba(200,230,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 1310px 600px, rgba(255,255,255,0.75), transparent);
+    background-size: 550px 550px;
+}
+
+.cosmos-constellations {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+}
+
+.constellation-lines line {
+    stroke: rgba(180, 220, 255, 0.22);
+    stroke-width: 1px;
+    stroke-dasharray: 4 4;
+}
+
+.constellation-stars .star {
+    fill: #FFFFFF;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+}
+
+.constellation-stars .star--bright {
+    fill: #FFFFFF;
+    filter: drop-shadow(0 0 6px rgba(121, 192, 255, 0.95)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: starPulse 4s ease-in-out infinite alternate;
+}
+
+.constellation-stars .star--primary {
+    fill: #FFFFFF;
+    filter: drop-shadow(0 0 8px rgba(121, 192, 255, 1)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.95));
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: starPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes starPulse {
+    0% { transform: scale(0.85); opacity: 0.75; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
 
 /* --- Band Logos / Marquee Showcase --- */
 .marquee-container {
@@ -876,15 +968,15 @@ p {
     border-color: var(--color-accent-glow);
     background: var(--glass-bg-hover);
     transform: translateY(-2px);
-    box-shadow: 0 0 16px rgba(247, 0, 255, 0.4);
+    box-shadow: 0 0 16px rgba(121, 192, 255, 0.35);
 }
 
 .marquee-badge__dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--color-accent);
-    box-shadow: 0 0 8px var(--color-accent);
+    background: var(--color-accent-glow);
+    box-shadow: 0 0 8px var(--color-accent-glow);
 }
 
 @keyframes marqueeScroll {
@@ -913,7 +1005,7 @@ p {
         width: 82%;
         max-width: 320px;
         height: 100vh;
-        background: rgba(10, 0, 18, 0.97);
+        background: rgba(5, 9, 15, 0.96);
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
         flex-direction: column;
@@ -986,6 +1078,20 @@ p {
 
     .genre-cards-grid {
         grid-template-columns: 1fr;
+    }
+
+    .navbar__social {
+        gap: 0.25rem;
+    }
+
+    .navbar__social a {
+        width: 36px;
+        height: 36px;
+    }
+
+    .navbar__social a svg {
+        width: 16px;
+        height: 16px;
     }
 }
 

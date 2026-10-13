@@ -64,13 +64,17 @@ window.ORION_DATA = {
             "number": "524771797700",
             "label": "Cotiza por WhatsApp"
         },
+        "facebook": {
+            "url": "https://www.facebook.com/profile.php?id=61578739701452",
+            "label": "Orion Live Band"
+        },
         "instagram": {
             "url": "https://www.instagram.com/orionliveband/",
             "label": "@orionliveband"
         },
-        "facebook": {
-            "url": "https://www.facebook.com/profile.php?id=61578739701452",
-            "label": "Orion Live Band"
+        "email": {
+            "address": "jairjjr@gmail.com",
+            "label": "jairjjr@gmail.com"
         }
     }
 };
