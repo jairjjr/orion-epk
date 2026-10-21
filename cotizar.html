@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cotiza la presentación en vivo de Orion Live Band para tu evento, boda, XV años o fiesta privada. Respuesta rápida y personalizada.">
+    <title>Cotiza tu Show | Orion Live Band</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="media/brand/Logo-Orion-master.png">
+</head>
+<body class="quote-page">
+
+    <!-- Fondo de Nebulosa Cósmica Estática -->
+    <div class="cosmos-bg" aria-hidden="true">
+        <div class="cosmos-glow cosmos-glow--top"></div>
+        <div class="cosmos-glow cosmos-glow--bottom"></div>
+    </div>
+
+    <!-- Navegación Simplificada -->
+    <header class="quote-header">
+        <div class="quote-header__inner">
+            <a href="index.html" class="quote-header__logo" aria-label="Ir a la página principal de Orion Live Band">
+                <img src="media/brand/Logo-Orion-master.png" alt="Orion Live Band logo">
+            </a>
+            <a href="index.html" class="quote-header__back" id="back-to-epk">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                Volver al EPK
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="quote-main">
+        <div class="quote-container">
+
+            <!-- Encabezado de la Página -->
+            <div class="quote-intro">
+                <span class="quote-badge">Cotizador & Brief de Evento</span>
+                <h1 class="quote-title">Cotiza tu Show</h1>
+                <p class="quote-subtitle">
+                    Cuéntanos los detalles de tu evento. Hemos diseñado esta guía rápida con opciones táctiles para que teclees lo mínimo y recibas tu propuesta personalizada.
+                </p>
+            </div>
+
+            <!-- Formulario de Cotización -->
+            <form id="quote-form" class="quote-form" novalidate>
+
+                <!-- ============================
+                     BLOQUE 1: FECHA Y CELEBRACIÓN
+                ============================= -->
+                <section class="form-section">
+                    <div class="form-section__header">
+                        <span class="form-section__step">01</span>
+                        <div>
+                            <h2 class="form-section__title">Fecha y Tipo de Evento</h2>
+                            <p class="form-section__desc">¿Cuándo y qué celebraremos juntos?</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <!-- Fecha del Evento -->
+                        <div class="form-group form-group--full">
+                            <label for="event-date" class="form-label">
+                                Fecha del Evento <span class="required-star">*</span>
+                            </label>
+                            <div class="date-input-wrapper">
+                                <input
+                                    type="date"
+                                    id="event-date"
+                                    name="fecha_evento"
+                                    class="form-input form-input--date"
+                                    required
+                                >
+                            </div>
+                            <span class="form-hint">Selecciona la fecha programada o tentativa.</span>
+                        </div>
+
+                        <!-- Tipo de Evento (Tarjetas de Selección Rápida) -->
+                        <div class="form-group form-group--full">
+                            <label class="form-label">
+                                Tipo de Celebración <span class="required-star">*</span>
+                            </label>
+                            <div class="option-cards-grid" role="radiogroup" aria-label="Tipo de celebración">
+                                <label class="option-card">
+                                    <input type="radio" name="tipo_evento" value="Boda / Matrimonio" required>
+                                    <div class="option-card__content">
+                                        <span class="option-card__icon" aria-hidden="true">💍</span>
+                                        <span class="option-card__title">Boda</span>
+                                        <span class="option-card__desc">Recepción, fiesta y pista viva</span>
+                                    </div>
+                                </label>
+
+                                <label class="option-card">
+                                    <input type="radio" name="tipo_evento" value="XV Años">
+                                    <div class="option-card__content">
+                                        <span class="option-card__icon" aria-hidden="true">👑</span>
+                                        <span class="option-card__title">XV Años</span>
+                                        <span class="option-card__desc">Fiesta juvenil y baile de gala</span>
+                                    </div>
+                                </label>
+
+                                <label class="option-card">
+                                    <input type="radio" name="tipo_evento" value="Cumpleaños / Aniversario">
+                                    <div class="option-card__content">
+                                        <span class="option-card__icon" aria-hidden="true">🎂</span>
+                                        <span class="option-card__title">Cumpleaños / Aniv.</span>
+                                        <span class="option-card__desc">Celebración social entre amigos</span>
+                                    </div>
+                                </label>
+
+                                <label class="option-card">
+                                    <input type="radio" name="tipo_evento" value="Corporativo / Empresarial">
+                                    <div class="option-card__content">
+                                        <span class="option-card__icon" aria-hidden="true">🏢</span>
+                                        <span class="option-card__title">Corporativo</span>
+                                        <span class="option-card__desc">Fin de año, congreso o gala</span>
+                                    </div>
+                                </label>
+
+                                <label class="option-card">
+                                    <input type="radio" name="tipo_evento" value="Bar / Festival / Público">
+                                    <div class="option-card__content">
+                                        <span class="option-card__icon" aria-hidden="true">🍻</span>
+                                        <span class="option-card__title">Bar o Festival</span>
+                                        <span class="option-card__desc">Venue abierto al público</span>
+                                    </div>
+                                </label>
+
+                                <label class="option-card">
+                                    <input type="radio" name="tipo_evento" value="Fiesta Privada">
+                                    <div class="option-card__content">
+                                        <span class="option-card__icon" aria-hidden="true">🎉</span>
+                                        <span class="option-card__title">Fiesta Privada</span>
+                                        <span class="option-card__desc">Reunión exclusiva particular</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============================
+                     BLOQUE 2: AFORO Y RECINTO
+                ============================= -->
+                <section class="form-section">
+                    <div class="form-section__header">
+                        <span class="form-section__step">02</span>
+                        <div>
+                            <h2 class="form-section__title">Aforo y Recinto</h2>
+                            <p class="form-section__desc">Para calcular la dimensión sonora ideal.</p>
+                        </div>
+                    </div>
+
+                    <!-- Número de Personas (Brincos de 25) -->
+                    <div class="form-group form-group--full">
+                        <div class="guests-header">
+                            <label class="form-label" id="guests-label">
+                                Número Estimado de Invitados <span class="required-star">*</span>
+                            </label>
+                            <span class="guests-counter-badge" id="guests-badge-display">100 personas</span>
+                        </div>
+
+                        <!-- Stepper de Ajuste Fino (+25 / -25) -->
+                        <div class="stepper-box">
+                            <button
+                                type="button"
+                                class="stepper-btn"
+                                id="btn-guests-minus"
+                                aria-label="Restar 25 invitados"
+                            >
+                                - 25
+                            </button>
+                            <div class="stepper-value-wrap">
+                                <input
+                                    type="text"
+                                    id="guests-count-input"
+                                    name="numero_personas"
+                                    value="100 personas"
+                                    class="stepper-input"
+                                    readonly
+                                    required
+                                >
+                            </div>
+                            <button
+                                type="button"
+                                class="stepper-btn"
+                                id="btn-guests-plus"
+                                aria-label="Sumar 25 invitados"
+                            >
+                                + 25
+                            </button>
+                        </div>
+
+                        <!-- Chips de Selección Rápida en Brincos de 25 -->
+                        <span class="form-sublabel">O elige directamente con un toque:</span>
+                        <div class="chips-grid" role="group" aria-label="Selección rápida de invitados">
+                            <button type="button" class="chip-btn" data-guests="Hasta 25 personas">Hasta 25</button>
+                            <button type="button" class="chip-btn" data-guests="25 a 50 personas">25 – 50</button>
+                            <button type="button" class="chip-btn" data-guests="50 a 75 personas">50 – 75</button>
+                            <button type="button" class="chip-btn" data-guests="75 a 100 personas">75 – 100</button>
+                            <button type="button" class="chip-btn is-active" data-guests="100 a 125 personas">100 – 125</button>
+                            <button type="button" class="chip-btn" data-guests="125 a 150 personas">125 – 150</button>
+                            <button type="button" class="chip-btn" data-guests="150 a 175 personas">150 – 175</button>
+                            <button type="button" class="chip-btn" data-guests="175 a 200 personas">175 – 200</button>
+                            <button type="button" class="chip-btn" data-guests="200 a 250 personas">200 – 250</button>
+                            <button type="button" class="chip-btn" data-guests="250 a 300 personas">250 – 300</button>
+                            <button type="button" class="chip-btn" data-guests="Más de 300 personas">300+</button>
+                        </div>
+                    </div>
+
+                    <!-- Espacio Abierto o Cerrado -->
+                    <div class="form-group form-group--full">
+                        <label class="form-label">
+                            Tipo de Espacio <span class="required-star">*</span>
+                        </label>
+                        <div class="option-cards-grid option-cards-grid--two" role="radiogroup" aria-label="Tipo de espacio">
+                            <label class="option-card">
+                                <input type="radio" name="tipo_espacio" value="Espacio Abierto (Jardín, Terraza, Quinta)" required>
+                                <div class="option-card__content">
+                                    <span class="option-card__icon" aria-hidden="true">🌿</span>
+                                    <span class="option-card__title">Espacio Abierto</span>
+                                    <span class="option-card__desc">Jardín, terraza, quinta o explanada al aire libre</span>
+                                </div>
+                            </label>
+
+                            <label class="option-card">
+                                <input type="radio" name="tipo_espacio" value="Espacio Cerrado (Salón, Auditorio, Techado)">
+                                <div class="option-card__content">
+                                    <span class="option-card__icon" aria-hidden="true">🏛️</span>
+                                    <span class="option-card__title">Espacio Cerrado</span>
+                                    <span class="option-card__desc">Salón de eventos, auditorio o recinto techado</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Sistema de Sonido (PA) -->
+                    <div class="form-group form-group--full">
+                        <label class="form-label">
+                            Sistema de Sonido / Audio (PA) <span class="required-star">*</span>
+                        </label>
+                        <div class="option-cards-grid option-cards-grid--three" role="radiogroup" aria-label="Sistema de audio">
+                            <label class="option-card">
+                                <input type="radio" name="sistema_audio" value="El recinto ya cuenta con PA / audio profesional" required>
+                                <div class="option-card__content">
+                                    <span class="option-card__icon" aria-hidden="true">🔊</span>
+                                    <span class="option-card__title">El recinto tiene PA</span>
+                                    <span class="option-card__desc">Solo requerimos conectar instrumentos y microfonía</span>
+                                </div>
+                            </label>
+
+                            <label class="option-card">
+                                <input type="radio" name="sistema_audio" value="Requerimos que Orión lleve equipo de audio / PA completo">
+                                <div class="option-card__content">
+                                    <span class="option-card__icon" aria-hidden="true">⚡</span>
+                                    <span class="option-card__title">Orión lleva el PA</span>
+                                    <span class="option-card__desc">Incluir sistema de sonido completo para el aforo</span>
+                                </div>
+                            </label>
+
+                            <label class="option-card">
+                                <input type="radio" name="sistema_audio" value="Por definir / Necesitamos asesoría de la banda">
+                                <div class="option-card__content">
+                                    <span class="option-card__icon" aria-hidden="true">❓</span>
+                                    <span class="option-card__title">Por Definir</span>
+                                    <span class="option-card__desc">No estoy seguro, necesito asesoría técnica</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============================
+                     BLOQUE 3: DETALLES MUSICALES
+                ============================= -->
+                <section class="form-section">
+                    <div class="form-section__header">
+                        <span class="form-section__step">03</span>
+                        <div>
+                            <h2 class="form-section__title">El Momento Musical Especial</h2>
+                            <p class="form-section__desc">Personalicemos tu experiencia en vivo.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-group--full">
+                        <label for="special-song" class="form-label">
+                            ¿Hay alguna canción especial para la celebración o festejados?
+                        </label>
+                        <input
+                            type="text"
+                            id="special-song"
+                            name="cancion_especial"
+                            class="form-input"
+                            placeholder="Ej. Can't Take My Eyes Off You, canción de vals, tema preferido..."
+                        >
+                        <span class="form-hint">Opcional. Si tienes una canción insignia, la preparamos para el momento cumbre.</span>
+                    </div>
+                </section>
+
+                <!-- ============================
+                     BLOQUE 4: DATOS DE CONTACTO
+                ============================= -->
+                <section class="form-section">
+                    <div class="form-section__header">
+                        <span class="form-section__step">04</span>
+                        <div>
+                            <h2 class="form-section__title">Tus Datos de Contacto</h2>
+                            <p class="form-section__desc">Para enviarte la propuesta formal y cotización.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <!-- Nombre Completo -->
+                        <div class="form-group form-group--half">
+                            <label for="client-name" class="form-label">
+                                Nombre Completo o Empresa <span class="required-star">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="client-name"
+                                name="nombre"
+                                class="form-input"
+                                placeholder="Tu nombre"
+                                required
+                            >
+                        </div>
+
+                        <!-- Teléfono / WhatsApp -->
+                        <div class="form-group form-group--half">
+                            <label for="client-phone" class="form-label">
+                                WhatsApp o Teléfono Móvil <span class="required-star">*</span>
+                            </label>
+                            <input
+                                type="tel"
+                                id="client-phone"
+                                name="telefono"
+                                class="form-input"
+                                placeholder="Ej. 477 123 4567"
+                                required
+                            >
+                        </div>
+
+                        <!-- Correo Electrónico -->
+                        <div class="form-group form-group--half">
+                            <label for="client-email" class="form-label">
+                                Correo Electrónico <span class="required-star">*</span>
+                            </label>
+                            <input
+                                type="email"
+                                id="client-email"
+                                name="email"
+                                class="form-input"
+                                placeholder="tucorreo@ejemplo.com"
+                                required
+                            >
+                        </div>
+
+                        <!-- Ciudad / Recinto -->
+                        <div class="form-group form-group--half">
+                            <label for="event-city" class="form-label">
+                                Ciudad o Recinto del Evento
+                            </label>
+                            <input
+                                type="text"
+                                id="event-city"
+                                name="ciudad_recinto"
+                                class="form-input"
+                                placeholder="Ej. León, Guanajuato / Salón Vista Magna"
+                            >
+                        </div>
+
+                        <!-- Notas Adicionales -->
+                        <div class="form-group form-group--full">
+                            <label for="client-notes" class="form-label">
+                                Comentarios o requerimientos adicionales
+                            </label>
+                            <textarea
+                                id="client-notes"
+                                name="notas"
+                                class="form-textarea"
+                                rows="3"
+                                placeholder="Horario aproximado, temática del evento o cualquier duda adicional..."
+                            ></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mensaje de Error de Validación (Oculto) -->
+                <div id="form-error-msg" class="form-alert form-alert--error" role="alert" style="display: none;">
+                    Por favor completa todos los campos marcados con asterisco (*) para continuar.
+                </div>
+
+                <!-- Botón de Envío -->
+                <div class="form-submit-container">
+                    <button type="submit" class="btn btn--primary btn--submit" id="submit-quote-btn">
+                        <span class="btn-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                            Enviar Solicitud de Cotización
+                        </span>
+                        <span class="btn-loader" style="display: none;">
+                            <span class="spinner"></span>
+                            Procesando y enviando solicitud...
+                        </span>
+                    </button>
+                    <p class="form-disclaimer">
+                        🔒 Tus datos están seguros. Te responderemos vía correo electrónico y WhatsApp el mismo día.
+                    </p>
+                </div>
+            </form>
+
+            <!-- ============================
+                 PANTALLA DE CONFIRMACIÓN (ÉXITO)
+            ============================= -->
+            <div id="quote-success" class="quote-success-card" style="display: none;" role="region" aria-live="polite">
+                <div class="success-icon-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <h2 class="success-title">¡Solicitud de Cotización Enviada!</h2>
+                <p class="success-message">
+                    Muchas gracias, <strong id="success-client-name">amigo</strong>. Hemos recibido exitosamente los datos de tu evento y ya fueron notificados a <strong class="glow-text">jairjjr@gmail.com</strong>.
+                </p>
+
+                <!-- Tarjeta de Resumen -->
+                <div class="summary-card">
+                    <h3 class="summary-title">Resumen de tu Brief</h3>
+                    <div class="summary-list" id="summary-details">
+                        <!-- Generado dinámicamente con JS -->
+                    </div>
+                </div>
+
+                <!-- Call To Action Directo por WhatsApp -->
+                <div class="whatsapp-backup-box">
+                    <p class="whatsapp-backup-text">
+                        ¿Quieres acelerar la respuesta o platicar de inmediato? Avísale a Jair directamente por WhatsApp con un solo clic:
+                    </p>
+                    <a
+                        href="#"
+                        id="whatsapp-summary-btn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn--whatsapp-direct"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        Avisar a Jair por WhatsApp (1 clic)
+                    </a>
+                </div>
+
+                <div class="success-actions">
+                    <a href="index.html" class="btn btn--outline">Volver a la Página Principal</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Simplificado -->
+    <footer class="footer quote-footer">
+        <div class="container">
+            <p>© 2026 Orion Live Band. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica de Formulario -->
+    <script src="js/cotizador.js"></script>
+</body>
+</html>
