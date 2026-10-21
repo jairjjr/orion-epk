@@ -376,7 +376,10 @@
 
             <!-- Galería de Fotos -->
             <div class="gallery-grid" id="gallery-container">
-                                                                                                                <!-- GALLERY_START -->
+                                                                                                                                <!-- GALLERY_START -->
+                <a class="gallery-item" href="media/img/OrionBoda.jpeg" onclick="event.preventDefault(); document.getElementById('lightbox-img').src=this.href; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow='hidden';">
+                    <img src="media/img/OrionBoda.jpeg" alt="Orion Live Band - OrionBoda" loading="lazy">
+                </a>
                 <a class="gallery-item" href="media/img/claudio-bass-live02.jpeg" onclick="event.preventDefault(); document.getElementById('lightbox-img').src=this.href; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow='hidden';">
                     <img src="media/img/claudio-bass-live02.jpeg" alt="Orion Live Band - claudio-bass-live02" loading="lazy">
                 </a>
@@ -396,6 +399,7 @@
                     <img src="media/img/orion-band-full.jpeg" alt="Orion Live Band - orion-band-full" loading="lazy">
                 </a>
                 <!-- GALLERY_END -->
+
 
 
 
