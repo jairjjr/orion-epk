@@ -68,7 +68,7 @@
 
                     <div class="form-grid">
                         <!-- Fecha del Evento -->
-                        <div class="form-group form-group--full">
+                        <div class="form-group form-group--half">
                             <label for="event-date" class="form-label">
                                 Fecha del Evento <span class="required-star">*</span>
                             </label>
@@ -81,7 +81,43 @@
                                     required
                                 >
                             </div>
-                            <span class="form-hint">Selecciona la fecha programada o tentativa.</span>
+                            <span class="form-hint">Día programado o tentativo.</span>
+                        </div>
+
+                        <!-- Horario Estimado de Inicio -->
+                        <div class="form-group form-group--half">
+                            <label for="event-time" class="form-label">
+                                Horario Estimado de Inicio
+                            </label>
+                            <div class="time-input-wrapper">
+                                <input
+                                    type="time"
+                                    id="event-time"
+                                    name="horario_evento"
+                                    class="form-input form-input--time"
+                                    value="20:00"
+                                >
+                            </div>
+                            <!-- Presets Rápidos de Horario -->
+                            <div class="time-presets" role="group" aria-label="Horarios sugeridos">
+                                <button type="button" class="time-pill-btn" data-time="15:00">☀️ Tarde (3:00 PM)</button>
+                                <button type="button" class="time-pill-btn is-active" data-time="20:00">🌙 Noche (8:00 PM)</button>
+                            </div>
+                        </div>
+
+                        <!-- Duración Estimada del Servicio -->
+                        <div class="form-group form-group--full">
+                            <label class="form-label">
+                                Duración Estimada de Música en Vivo <span class="required-star">*</span>
+                            </label>
+                            <input type="hidden" id="duration-input" name="duracion_servicio" value="3 Horas (2 Sets)">
+                            <div class="chips-grid chips-grid--duration" role="radiogroup" aria-label="Duración del show">
+                                <button type="button" class="chip-btn duration-chip" data-duration="2 Horas (1 Set extendido)">2 Horas (1 Set)</button>
+                                <button type="button" class="chip-btn duration-chip is-active" data-duration="3 Horas (2 Sets)">3 Horas (2 Sets)</button>
+                                <button type="button" class="chip-btn duration-chip" data-duration="4 Horas o más (Evento completo)">4+ Horas (Completo)</button>
+                                <button type="button" class="chip-btn duration-chip" data-duration="Por definir / Asesoría requerida">Por definir</button>
+                            </div>
+                            <span class="form-hint">Orión se adapta al programa de tu evento.</span>
                         </div>
 
                         <!-- Tipo de Evento (Tarjetas de Selección Rápida) -->
