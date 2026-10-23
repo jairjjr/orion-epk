@@ -196,49 +196,26 @@
                         </div>
                     </div>
 
-                    <!-- Número de Personas (Brincos de 25) -->
+                    <!-- Número de Personas (Selección por Rangos) -->
                     <div class="form-group form-group--full">
                         <div class="guests-header">
                             <label class="form-label" id="guests-label">
                                 Número Estimado de Invitados <span class="required-star">*</span>
                             </label>
-                            <span class="guests-counter-badge" id="guests-badge-display">100 personas</span>
+                            <span class="guests-counter-badge" id="guests-badge-display">100 a 125 personas</span>
                         </div>
 
-                        <!-- Stepper de Ajuste Fino (+25 / -25) -->
-                        <div class="stepper-box">
-                            <button
-                                type="button"
-                                class="stepper-btn"
-                                id="btn-guests-minus"
-                                aria-label="Restar 25 invitados"
-                            >
-                                - 25
-                            </button>
-                            <div class="stepper-value-wrap">
-                                <input
-                                    type="text"
-                                    id="guests-count-input"
-                                    name="numero_personas"
-                                    value="100 personas"
-                                    class="stepper-input"
-                                    readonly
-                                    required
-                                >
-                            </div>
-                            <button
-                                type="button"
-                                class="stepper-btn"
-                                id="btn-guests-plus"
-                                aria-label="Sumar 25 invitados"
-                            >
-                                + 25
-                            </button>
-                        </div>
+                        <!-- Campo oculto para envío del formulario -->
+                        <input
+                            type="hidden"
+                            id="guests-count-input"
+                            name="numero_personas"
+                            value="100 a 125 personas"
+                            required
+                        >
 
-                        <!-- Chips de Selección Rápida en Brincos de 25 -->
-                        <span class="form-sublabel">O elige directamente con un toque:</span>
-                        <div class="chips-grid" role="group" aria-label="Selección rápida de invitados">
+                        <!-- Botones de Selección por Rangos -->
+                        <div class="chips-grid" role="group" aria-label="Selección de rango de invitados">
                             <button type="button" class="chip-btn" data-guests="Hasta 25 personas">Hasta 25</button>
                             <button type="button" class="chip-btn" data-guests="25 a 50 personas">25 – 50</button>
                             <button type="button" class="chip-btn" data-guests="50 a 75 personas">50 – 75</button>

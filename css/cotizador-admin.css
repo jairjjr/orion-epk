@@ -261,8 +261,14 @@ body.admin-body {
     padding-top: 0.85rem;
     border-top: 1px dashed rgba(255, 255, 255, 0.1);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
+}
+
+@media (max-width: 600px) {
+    .calc-preview {
+        grid-template-columns: 1fr;
+    }
 }
 
 .calc-item {

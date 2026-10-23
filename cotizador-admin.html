@@ -78,33 +78,23 @@
                         <input type="number" id="input-price-total" class="admin-input admin-input--price" placeholder="ej. 35000" value="32000">
                     </div>
                     <div class="admin-field">
-                        <label class="admin-label" for="input-deposit-pct">Anticipo (%)</label>
-                        <input type="number" id="input-deposit-pct" class="admin-input admin-input--price" placeholder="ej. 50" value="50">
+                        <label class="admin-label">Esquema de Pagos Oficial</label>
+                        <input type="text" class="admin-input" value="40% Reserva · 30% 1 sem antes · 30% Evento" readonly style="opacity: 0.85; font-size: 0.78rem;">
                     </div>
                 </div>
 
                 <div class="calc-preview">
                     <div class="calc-item">
-                        <span class="calc-label">Anticipo para Apartar:</span>
-                        <span class="calc-value" id="calc-deposit-display">$16,000 MXN</span>
+                        <span class="calc-label">1. Reserva (40%):</span>
+                        <span class="calc-value" id="calc-pay1-display">$12,800 MXN</span>
                     </div>
                     <div class="calc-item">
-                        <span class="calc-label">Saldo a Liquidar:</span>
-                        <span class="calc-value" id="calc-balance-display">$16,000 MXN</span>
+                        <span class="calc-label">2. 1 Sem. Antes (30%):</span>
+                        <span class="calc-value" id="calc-pay2-display">$9,600 MXN</span>
                     </div>
-                </div>
-
-                <div class="form-row form-row--full" style="margin-top: 0.85rem;">
-                    <div class="admin-field">
-                        <label class="admin-label" for="input-pay-terms">Momento de Liquidación del Saldo</label>
-                        <input type="text" id="input-pay-terms" class="admin-input" value="Al término del montaje y soundcheck, previo a iniciar el show">
-                    </div>
-                </div>
-
-                <div class="form-row form-row--full">
-                    <div class="admin-field">
-                        <label class="admin-label" for="input-bank-info">Datos Bancarios para Depósito / Transferencia</label>
-                        <textarea id="input-bank-info" class="admin-textarea" rows="2">BBVA · Jair Jaimez · Cuenta: 1234567890 · CLABE: 012180012345678901</textarea>
+                    <div class="calc-item">
+                        <span class="calc-label">3. Día del Evento (30%):</span>
+                        <span class="calc-value" id="calc-pay3-display">$9,600 MXN</span>
                     </div>
                 </div>
             </div>
@@ -198,8 +188,8 @@
                 </h2>
                 <div class="checklist-grid" id="checklist-services">
                     <label class="check-item">
-                        <input type="checkbox" checked data-service="4 Músicos profesionales en vivo (Voz líder/Gtr, Bajo/Coros, Batería, Teclados/Coros)">
-                        <span>4 Músicos profesionales en vivo</span>
+                        <input type="checkbox" checked data-service="4 Músicos profesionales en vivo (Vocalista femenina, Guitarra y voz, Bajo y Batería)">
+                        <span>4 Músicos profesionales en vivo (Voz femenina, Guitarra/voz, Bajo, Batería)</span>
                     </label>
                     <label class="check-item">
                         <input type="checkbox" checked data-service="3 Horas de evento con 2 Sets de show musical en vivo">
@@ -226,8 +216,8 @@
                         <span>Música ambiental continua en intermedios</span>
                     </label>
                     <label class="check-item">
-                        <input type="checkbox" checked data-service="Repertorio adaptado al evento (Rock en tu idioma, pop, baladas y selección navideña)">
-                        <span>Repertorio adaptado (clásicos, rock y navideño)</span>
+                        <input type="checkbox" checked id="chk-service-repertoire" data-service-repertoire="true">
+                        <span id="label-service-repertoire">Repertorio personalizado para el evento</span>
                     </label>
                     <label class="check-item">
                         <input type="checkbox" checked data-service="Montaje técnico y prueba de sonido (Soundcheck) 2 horas previas al inicio">
@@ -269,8 +259,8 @@
 
                 <div class="form-row form-row--full">
                     <div class="admin-field">
-                        <label class="admin-label" for="clause-terms">4. Políticas de Reserva</label>
-                        <textarea id="clause-terms" class="admin-textarea" rows="2">La fecha queda apartada formalmente con el depósito del 50% de anticipo. Vigencia de esta cotización: 15 días naturales a partir de su emisión.</textarea>
+                        <label class="admin-label" for="clause-terms">4. Políticas de Reserva y Pagos</label>
+                        <textarea id="clause-terms" class="admin-textarea" rows="3">La fecha queda formalmente apartada y agendada con el anticipo del 40%. El segundo pago del 30% se liquida una (1) semana antes de la fecha del evento, y el saldo final del 30% restante el día del evento al término del soundcheck (previo a iniciar el show). Vigencia de esta cotización: 15 días naturales a partir de su emisión.</textarea>
                     </div>
                 </div>
             </div>
@@ -359,31 +349,34 @@
                             <tr>
                                 <td>
                                     <strong>Presentación Musical en Vivo Orion Live Band</strong><br>
-                                    <span style="font-size: 0.78rem; color: #6B7280;">Incluye banda completa, sistema de audio PA para 150 personas, staff e iluminación.</span>
+                                    <span style="font-size: 0.78rem; color: #6B7280;">Incluye alineación de 4 músicos en vivo (Voz femenina, Guitarra y voz, Bajo, Batería), sistema de audio PA profesional, staff e iluminación.</span>
                                 </td>
                                 <td style="text-align: center;" id="doc-table-duration">3 Horas / 2 Sets</td>
                                 <td class="col-total" id="doc-price-total">$32,000 MXN</td>
                             </tr>
                             <tr style="background: #F9FAFB;">
-                                <td colspan="2"><strong>Anticipo para Reserva de Fecha (<span id="doc-deposit-pct">50</span>%):</strong></td>
-                                <td style="text-align: right; font-weight: 700; color: #1E40AF;" id="doc-deposit-amount">$16,000 MXN</td>
+                                <td colspan="2">
+                                    <strong>1. Anticipo para Apartar y Agendar Fecha (40%):</strong><br>
+                                    <span style="font-size: 0.75rem; color: #6B7280;">Al confirmar la contratación para bloquear la fecha en calendario oficial.</span>
+                                </td>
+                                <td style="text-align: right; font-weight: 700; color: #1E40AF;" id="doc-pay1-amount">$12,800 MXN</td>
+                            </tr>
+                            <tr style="background: #FFFFFF;">
+                                <td colspan="2">
+                                    <strong>2. Segundo Pago Intermedio (30%):</strong><br>
+                                    <span style="font-size: 0.75rem; color: #6B7280;">A liquidarse una (1) semana antes de la fecha del evento.</span>
+                                </td>
+                                <td style="text-align: right; font-weight: 700; color: #111827;" id="doc-pay2-amount">$9,600 MXN</td>
                             </tr>
                             <tr style="background: #F9FAFB;">
                                 <td colspan="2">
-                                    <strong>Saldo Pendiente a Liquidar:</strong><br>
-                                    <span style="font-size: 0.75rem; color: #6B7280;" id="doc-pay-terms">Al término del montaje y soundcheck, previo a iniciar el show</span>
+                                    <strong>3. Saldo Final (30%):</strong><br>
+                                    <span style="font-size: 0.75rem; color: #6B7280;">El día del evento, al término del montaje y soundcheck (previo a iniciar el show).</span>
                                 </td>
-                                <td style="text-align: right; font-weight: 700; color: #111827;" id="doc-balance-amount">$16,000 MXN</td>
+                                <td style="text-align: right; font-weight: 700; color: #111827;" id="doc-pay3-amount">$9,600 MXN</td>
                             </tr>
                         </tbody>
                     </table>
-
-                    <div class="sheet-payment-box">
-                        <div>
-                            <strong>Datos para Transferencia / Depósito:</strong><br>
-                            <span id="doc-bank-info">BBVA · Jair Jaimez · Cuenta: 1234567890 · CLABE: 012180012345678901</span>
-                        </div>
-                    </div>
                 </section>
 
                 <!-- Rider Técnico y Cláusulas -->
@@ -404,7 +397,7 @@
                         </div>
                         <div class="clause-item" id="doc-clause-terms">
                             <strong>4. Reserva y Vigencia:</strong>
-                            <span>Fecha asegurada con el 50% de anticipo. Cotización válida 15 días.</span>
+                            <span>Fecha agendada con 40% de anticipo, 30% 1 semana antes y 30% el día del evento. Vigencia: 15 días.</span>
                         </div>
                     </div>
                 </section>

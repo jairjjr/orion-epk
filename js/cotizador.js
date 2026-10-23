@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const durationChips = document.querySelectorAll('.duration-chip');
     const guestsInput = document.getElementById('guests-count-input');
     const guestsBadge = document.getElementById('guests-badge-display');
-    const btnGuestsMinus = document.getElementById('btn-guests-minus');
-    const btnGuestsPlus = document.getElementById('btn-guests-plus');
     const chipBtns = document.querySelectorAll('.chip-btn:not(.duration-chip)');
     const submitBtn = document.getElementById('submit-quote-btn');
     const btnText = submitBtn.querySelector('.btn-text');
@@ -67,61 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Control de Aforo con Brincos de 25
-    let currentGuestNumber = 100;
-
-    function updateGuestsDisplay(valueText, numericValue = null) {
-        guestsInput.value = valueText;
-        guestsBadge.textContent = valueText;
-        if (numericValue !== null) {
-            currentGuestNumber = numericValue;
-        }
-    }
-
-    btnGuestsMinus.addEventListener('click', () => {
-        if (currentGuestNumber > 25) {
-            currentGuestNumber -= 25;
-        } else {
-            currentGuestNumber = 25;
-        }
-        const text = `${currentGuestNumber} personas`;
-        updateGuestsDisplay(text, currentGuestNumber);
-        syncChipsWithNumber(currentGuestNumber);
-    });
-
-    btnGuestsPlus.addEventListener('click', () => {
-        currentGuestNumber += 25;
-        const text = `${currentGuestNumber} personas`;
-        updateGuestsDisplay(text, currentGuestNumber);
-        syncChipsWithNumber(currentGuestNumber);
-    });
-
+    // 5. Control de Aforo por Selección de Rangos
     chipBtns.forEach(chip => {
         chip.addEventListener('click', () => {
             chipBtns.forEach(c => c.classList.remove('is-active'));
             chip.classList.add('is-active');
 
             const guestStr = chip.getAttribute('data-guests');
-            const match = guestStr ? guestStr.match(/\d+/) : null;
-            if (match) {
-                currentGuestNumber = parseInt(match[0], 10);
+            if (guestsInput) {
+                guestsInput.value = guestStr;
             }
-            updateGuestsDisplay(guestStr, currentGuestNumber);
+            if (guestsBadge) {
+                guestsBadge.textContent = guestStr;
+            }
         });
     });
-
-    function syncChipsWithNumber(num) {
-        chipBtns.forEach(c => c.classList.remove('is-active'));
-        chipBtns.forEach(chip => {
-            const label = chip.getAttribute('data-guests');
-            if (!label) return;
-            if (num <= 25 && label.includes('Hasta 25')) {
-                chip.classList.add('is-active');
-            } else if (label.includes(`${num} a`) || label.includes(`– ${num}`) || label.includes(` ${num} `)) {
-                chip.classList.add('is-active');
-            }
-        });
-    }
 
     // 6. Feedback visual y accesibilidad en Option Cards
     const optionCards = document.querySelectorAll('.option-card');

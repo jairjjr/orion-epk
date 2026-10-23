@@ -17,9 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inputs de Edición
     const inputPriceTotal    = document.getElementById('input-price-total');
-    const inputDepositPct    = document.getElementById('input-deposit-pct');
-    const inputPayTerms      = document.getElementById('input-pay-terms');
-    const inputBankInfo      = document.getElementById('input-bank-info');
     const inputFolio         = document.getElementById('input-folio');
     const inputValidity      = document.getElementById('input-validity');
     const inputClientName    = document.getElementById('input-client-name');
@@ -53,11 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const docClientPhone     = document.getElementById('doc-client-phone');
     const docServicesList    = document.getElementById('doc-services-list');
     const docPriceTotal      = document.getElementById('doc-price-total');
-    const docDepositPct      = document.getElementById('doc-deposit-pct');
-    const docDepositAmount   = document.getElementById('doc-deposit-amount');
-    const docBalanceAmount   = document.getElementById('doc-balance-amount');
-    const docPayTerms        = document.getElementById('doc-pay-terms');
-    const docBankInfo        = document.getElementById('doc-bank-info');
+    const docPay1Amount      = document.getElementById('doc-pay1-amount');
+    const docPay2Amount      = document.getElementById('doc-pay2-amount');
+    const docPay3Amount      = document.getElementById('doc-pay3-amount');
     const docTableDuration   = document.getElementById('doc-table-duration');
     const docSignClient      = document.getElementById('doc-sign-client');
 
@@ -66,9 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const docClauseLogistics = document.getElementById('doc-clause-logistics');
     const docClauseTerms     = document.getElementById('doc-clause-terms');
 
-    // Displays auxiliares en panel
-    const calcDepositDisplay = document.getElementById('calc-deposit-display');
-    const calcBalanceDisplay = document.getElementById('calc-balance-display');
+    // Displays auxiliares en panel de control (3 Pagos)
+    const calcPay1Display = document.getElementById('calc-pay1-display');
+    const calcPay2Display = document.getElementById('calc-pay2-display');
+    const calcPay3Display = document.getElementById('calc-pay3-display');
 
     // 2. Formateador de Moneda
     function formatCurrency(amount) {
@@ -79,26 +75,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }).format(amount) + ' MXN';
     }
 
-    // 3. Actualización de Cálculos Económicos
+    // 3. Actualización de Cálculos Económicos (Esquema Oficial 40% - 30% - 30%)
     function updateEconomics() {
         const total = parseFloat(inputPriceTotal.value) || 0;
-        const pct   = parseFloat(inputDepositPct.value) || 50;
 
-        const deposit = Math.round(total * (pct / 100));
-        const balance = total - deposit;
+        const pay1 = Math.round(total * 0.40);
+        const pay2 = Math.round(total * 0.30);
+        const pay3 = total - (pay1 + pay2); // Asegura suma exacta sin desfase de redondeo
 
-        const depositFormatted = formatCurrency(deposit);
-        const balanceFormatted = formatCurrency(balance);
+        const pay1Formatted = formatCurrency(pay1);
+        const pay2Formatted = formatCurrency(pay2);
+        const pay3Formatted = formatCurrency(pay3);
 
-        calcDepositDisplay.textContent = depositFormatted;
-        calcBalanceDisplay.textContent = balanceFormatted;
+        if (calcPay1Display) calcPay1Display.textContent = pay1Formatted;
+        if (calcPay2Display) calcPay2Display.textContent = pay2Formatted;
+        if (calcPay3Display) calcPay3Display.textContent = pay3Formatted;
 
-        docPriceTotal.textContent    = formatCurrency(total);
-        docDepositPct.textContent    = pct;
-        docDepositAmount.textContent = depositFormatted;
-        docBalanceAmount.textContent = balanceFormatted;
-        docPayTerms.textContent      = inputPayTerms.value;
-        docBankInfo.textContent     = inputBankInfo.value;
+        if (docPriceTotal) docPriceTotal.textContent = formatCurrency(total);
+        if (docPay1Amount) docPay1Amount.textContent = pay1Formatted;
+        if (docPay2Amount) docPay2Amount.textContent = pay2Formatted;
+        if (docPay3Amount) docPay3Amount.textContent = pay3Formatted;
     }
 
     // 4. Actualización en Vivo de la Propuesta
@@ -120,16 +116,26 @@ document.addEventListener('DOMContentLoaded', () => {
         docEventTime.textContent      = fullTimeStr;
         docTableDuration.textContent  = inputEventDuration.value || 'Show en Vivo';
 
-        // Actualizar Servicios Incluidos
+        // Actualizar Servicios Incluidos (Dinámico con Repertorio vinculado a notas)
         const checkboxes = document.querySelectorAll('#checklist-services input[type="checkbox"]');
         docServicesList.innerHTML = '';
         checkboxes.forEach(chk => {
             if (chk.checked) {
+                let serviceText = chk.getAttribute('data-service');
+
+                // Si es el ítem especial de repertorio, adaptarlo al valor dinámico de notas
+                if (chk.getAttribute('data-service-repertoire') === 'true') {
+                    const repNotes = (inputEventNotes.value || '').trim();
+                    serviceText = repNotes
+                        ? `Repertorio personalizado para el evento: ${repNotes}`
+                        : `Repertorio personalizado para el evento (Rock en tu idioma, pop y clásicos en vivo)`;
+                }
+
                 const li = document.createElement('li');
                 li.className = 'sheet-service-item';
                 li.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                    <span>${chk.getAttribute('data-service')}</span>
+                    <span>${serviceText}</span>
                 `;
                 docServicesList.appendChild(li);
             }
@@ -139,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         docClauseElectric.innerHTML  = '<strong>1. Requerimiento Eléctrico (Tomas 110V):</strong> ' + formatClauseText(clauseElectric.value);
         docClauseStage.innerHTML     = '<strong>2. Escenario y Protección:</strong> ' + formatClauseText(clauseStage.value);
         docClauseLogistics.innerHTML = '<strong>3. Montaje y Pruebas:</strong> ' + formatClauseText(clauseLogistics.value);
-        docClauseTerms.innerHTML     = '<strong>4. Reserva y Vigencia:</strong> ' + formatClauseText(clauseTerms.value);
+        docClauseTerms.innerHTML     = '<strong>4. Políticas de Reserva y Pagos:</strong> ' + formatClauseText(clauseTerms.value);
 
         // Guardar automáticamente en LocalStorage
         saveDraft();
@@ -228,13 +234,23 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('⚡ ¡Propuesta completada con éxito desde el correo!');
     }
 
-    // 6. Generador de Mensaje Ejecutivo para WhatsApp
+    // 6. Generador de Mensaje Ejecutivo para WhatsApp (3 Pagos, sin datos bancarios, alineación exacta)
     function generateWhatsAppMessage() {
         const clientName    = inputClientName.value || 'amigo';
         const companyName   = inputCompanyName.value;
-        const totalFormatted= formatCurrency(parseFloat(inputPriceTotal.value) || 0);
-        const depositFormatted = calcDepositDisplay.textContent;
-        const balanceFormatted = calcBalanceDisplay.textContent;
+        const total         = parseFloat(inputPriceTotal.value) || 0;
+
+        const pay1 = Math.round(total * 0.40);
+        const pay2 = Math.round(total * 0.30);
+        const pay3 = total - (pay1 + pay2);
+
+        const totalFormatted = formatCurrency(total);
+        const pay1Formatted  = formatCurrency(pay1);
+        const pay2Formatted  = formatCurrency(pay2);
+        const pay3Formatted  = formatCurrency(pay3);
+
+        const repNotes = (inputEventNotes.value || '').trim();
+        const repertoire = repNotes ? repNotes : 'Rock en tu idioma, pop, baladas y clásicos de fiesta';
 
         const salutation = companyName 
             ? `¡Hola ${clientName}! Un gusto saludarte a ti y al equipo de ${companyName}.`
@@ -250,18 +266,19 @@ Te comparto con mucho gusto la propuesta formal para tu evento con *Orion Live B
 🎉 *Celebración:* ${inputEventType.value}
 
 🎸 *La experiencia de Orion Live Band incluye:*
-• 4 Músicos profesionales en vivo
-• Repertorio personalizado: ${inputEventNotes.value || 'Pop, Rock en tu idioma y clásicos de fiesta'}
+• 4 Músicos profesionales en vivo (Voz líder femenina, Guitarra y voz, Bajo y Batería)
+• Repertorio personalizado: ${repertoire}
 • Sistema de Sonido PA profesional completo (2 Subs + 2 Medios de 15") para cobertura total
 • Microfonía, consola digital e ingeniero de audio en sala
 • Iluminación escénica para la banda
 • Música ambiental continua durante los descansos
 • Montaje y prueba de sonido (Soundcheck) 2 horas antes
 
-💰 *Inversión del Show:*
+💰 *Inversión y Esquema de Pagos:*
 • *Costo Total:* ${totalFormatted}
-• *Anticipo para apartar fecha (${inputDepositPct.value}%):* ${depositFormatted}
-• *Saldo restante:* ${balanceFormatted} (${inputPayTerms.value})
+• *1er Pago (40% - Reserva y Agenda):* ${pay1Formatted} (para apartar y asegurar la fecha)
+• *2do Pago (30% - Intermedio):* ${pay2Formatted} (a liquidarse 1 semana antes del evento)
+• *3er Pago (30% - Saldo Final):* ${pay3Formatted} (el día del evento al término del soundcheck)
 
 ⚡ *Requerimiento Técnico Básico (Rider):*
 • Dos (2) tomas independientes a 110V a pie de escenario con tierra física real (Toma 1 Audio 15A / Toma 2 Músicos 6A).
@@ -283,9 +300,6 @@ Quedamos a tus órdenes para afinar cualquier detalle y asegurar la fecha en nue
     function saveDraft() {
         const draft = {
             priceTotal:    inputPriceTotal.value,
-            depositPct:    inputDepositPct.value,
-            payTerms:      inputPayTerms.value,
-            bankInfo:      inputBankInfo.value,
             folio:         inputFolio.value,
             validity:      inputValidity.value,
             clientName:    inputClientName.value,
@@ -315,9 +329,6 @@ Quedamos a tus órdenes para afinar cualquier detalle y asegurar la fecha en nue
             if (saved) {
                 const draft = JSON.parse(saved);
                 if (draft.priceTotal)    inputPriceTotal.value = draft.priceTotal;
-                if (draft.depositPct)    inputDepositPct.value = draft.depositPct;
-                if (draft.payTerms)      inputPayTerms.value   = draft.payTerms;
-                if (draft.bankInfo)      inputBankInfo.value   = draft.bankInfo;
                 if (draft.folio)         inputFolio.value      = draft.folio;
                 if (draft.validity)      inputValidity.value   = draft.validity;
                 if (draft.clientName)    inputClientName.value = draft.clientName;
@@ -378,7 +389,7 @@ Quedamos a tus órdenes para afinar cualquier detalle y asegurar la fecha en nue
             inputClientPhone.value = '';
             inputClientEmail.value = '';
             inputEventNotes.value = '';
-            inputPriceTotal.value = '30000';
+            inputPriceTotal.value = '32000';
             inputFolio.value = 'COT-' + new Date().toISOString().slice(0, 10).replace(/-/g, '');
             updatePreview();
             showToast('Formulario restablecido.');
