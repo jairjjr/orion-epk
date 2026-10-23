@@ -1,0 +1,618 @@
+/* ========================================================================
+   ORION LIVE BAND — Cotizador Privado & Generador de Propuestas
+   Estética Cósmica para edición en pantalla + Modo Editorial Print (PDF)
+   ======================================================================== */
+
+:root {
+    --color-bg-deep:        #030508;
+    --color-bg-surface:     #070B12;
+    --color-bg-card:        rgba(10, 16, 26, 0.85);
+    --color-accent:         #FFFFFF;
+    --color-accent-glow:    #79C0FF;
+    --color-accent-gold:    #F5A623;
+    --color-text-primary:   #FFFFFF;
+    --color-text-body:      #C5D1DE;
+    --color-text-muted:     #748394;
+    --glass-bg:             rgba(255, 255, 255, 0.03);
+    --glass-border:         rgba(255, 255, 255, 0.12);
+    --glass-bg-hover:       rgba(255, 255, 255, 0.07);
+    --font-family:          'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body.admin-body {
+    font-family: var(--font-family);
+    background-color: var(--color-bg-deep);
+    color: var(--color-text-body);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* --- Barra Superior Fija --- */
+.admin-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(3, 5, 8, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 0.85rem 1.5rem;
+}
+
+.admin-navbar__inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.admin-navbar__brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-navbar__brand img {
+    height: 34px;
+    width: auto;
+}
+
+.admin-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: rgba(121, 192, 255, 0.12);
+    border: 1px solid rgba(121, 192, 255, 0.35);
+    color: var(--color-accent-glow);
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.btn-admin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.15rem;
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+}
+
+.btn-admin--primary {
+    background: linear-gradient(135deg, #FFFFFF 0%, #D8ECFF 100%);
+    color: #030508;
+    box-shadow: 0 0 15px rgba(121, 192, 255, 0.3);
+}
+
+.btn-admin--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(121, 192, 255, 0.6);
+}
+
+.btn-admin--whatsapp {
+    background: #25D366;
+    color: #030508;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-admin--whatsapp:hover {
+    background: #2BF075;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+}
+
+.btn-admin--ghost {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--color-text-primary);
+}
+
+.btn-admin--ghost:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--color-accent-glow);
+}
+
+/* --- Layout Principal de 2 Columnas --- */
+.admin-layout {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 460px 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    align-items: start;
+}
+
+/* --- Panel de Edición (Izquierda) --- */
+.editor-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.editor-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.editor-card__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.editor-card__subtitle {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+}
+
+/* Smart Paste Box */
+.smart-paste-area {
+    width: 100%;
+    height: 100px;
+    background: rgba(3, 5, 8, 0.8);
+    border: 1px dashed rgba(121, 192, 255, 0.4);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: var(--color-text-body);
+    font-family: monospace;
+    font-size: 0.8rem;
+    resize: vertical;
+    margin-bottom: 0.75rem;
+}
+
+.smart-paste-area:focus {
+    outline: none;
+    border-color: var(--color-accent-glow);
+    box-shadow: 0 0 10px rgba(121, 192, 255, 0.2);
+}
+
+/* Inputs de Formulario */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
+}
+
+.form-row--full {
+    grid-template-columns: 1fr;
+}
+
+.admin-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.admin-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.admin-input,
+.admin-textarea {
+    width: 100%;
+    background: rgba(3, 5, 8, 0.7);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 0.65rem 0.85rem;
+    color: var(--color-text-primary);
+    font-family: var(--font-family);
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.admin-input:focus,
+.admin-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent-glow);
+    background: rgba(6, 10, 16, 0.95);
+    box-shadow: 0 0 10px rgba(121, 192, 255, 0.25);
+}
+
+/* Sección de Precio (Destacada) */
+.price-card {
+    background: linear-gradient(135deg, rgba(8, 18, 30, 0.9) 0%, rgba(12, 26, 44, 0.8) 100%);
+    border: 1px solid rgba(121, 192, 255, 0.4);
+    box-shadow: 0 0 20px rgba(121, 192, 255, 0.15);
+}
+
+.admin-input--price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #79C0FF;
+    border-color: rgba(121, 192, 255, 0.5);
+}
+
+.calc-preview {
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.calc-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-label {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+}
+
+.calc-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+/* Checklist de Servicios */
+.checklist-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-body);
+    cursor: pointer;
+}
+
+.check-item input[type="checkbox"] {
+    accent-color: var(--color-accent-glow);
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
+/* --- Panel de Vista Previa / Hoja de Propuesta (Derecha) --- */
+.preview-panel {
+    position: sticky;
+    top: 5.5rem;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Hoja Formal Membretada */
+.proposal-sheet {
+    background: #FFFFFF;
+    color: #111827;
+    border-radius: 12px;
+    padding: 3rem 2.75rem;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    position: relative;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Encabezado de la Hoja */
+.sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #E5E7EB;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+}
+
+.sheet-logo-wrap img {
+    height: 48px;
+    width: auto;
+    filter: invert(1); /* Fondo blanco -> logo oscuro */
+}
+
+.sheet-meta {
+    text-align: right;
+}
+
+.sheet-meta__title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+}
+
+.sheet-meta__folio {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #2563EB;
+    margin-top: 0.25rem;
+}
+
+.sheet-meta__date {
+    font-size: 0.78rem;
+    color: #6B7280;
+    margin-top: 0.25rem;
+}
+
+/* Ficha del Cliente */
+.sheet-client-card {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.sheet-info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.sheet-info-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #6B7280;
+    letter-spacing: 0.05em;
+}
+
+.sheet-info-val {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Secciones de la Hoja */
+.sheet-section {
+    margin-bottom: 1.75rem;
+}
+
+.sheet-section__title {
+    font-size: 0.9375rem;
+    font-weight: 800;
+    color: #111827;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-left: 3px solid #2563EB;
+    padding-left: 0.6rem;
+    margin-bottom: 0.85rem;
+}
+
+/* Lista de Servicios Incluidos */
+.sheet-services-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1rem;
+}
+
+.sheet-service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: #374151;
+}
+
+.sheet-service-item svg {
+    color: #10B981;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+}
+
+/* Tabla de Inversión */
+.sheet-price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sheet-price-table th {
+    background: #F3F4F6;
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #4B5563;
+    text-align: left;
+    font-weight: 700;
+}
+
+.sheet-price-table td {
+    padding: 0.85rem 1rem;
+    border-top: 1px solid #E5E7EB;
+    font-size: 0.875rem;
+}
+
+.sheet-price-table .col-total {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #111827;
+    text-align: right;
+}
+
+.sheet-payment-box {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    margin-top: 0.85rem;
+    font-size: 0.78rem;
+    color: #1E40AF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Cláusulas Técnicas */
+.sheet-clauses {
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-size: 0.78rem;
+    color: #4B5563;
+    line-height: 1.6;
+}
+
+.clause-item {
+    margin-bottom: 0.65rem;
+}
+
+.clause-item strong {
+    color: #111827;
+}
+
+.clause-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Pie de Hoja / Firma */
+.sheet-footer {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #E5E7EB;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.75rem;
+    color: #6B7280;
+}
+
+.sheet-signatures {
+    display: flex;
+    gap: 3rem;
+}
+
+.signature-box {
+    text-align: center;
+    width: 180px;
+    border-top: 1px solid #9CA3AF;
+    padding-top: 0.4rem;
+}
+
+/* Toast de Notificación */
+.toast-msg {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #10B981;
+    color: #FFFFFF;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.toast-msg.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================================================
+   REGLAS DE IMPRESIÓN Y PDF (@media print)
+   Impresión limpia tamaño Carta, sin elementos de la interfaz web
+   ======================================================================== */
+@media print {
+    @page {
+        size: letter portrait;
+        margin: 1.5cm;
+    }
+
+    body.admin-body {
+        background: #FFFFFF !important;
+        color: #111827 !important;
+    }
+
+    /* Ocultar barra superior, panel de edición, botones y toasters */
+    .admin-navbar,
+    .editor-panel,
+    .admin-actions,
+    .toast-msg {
+        display: none !important;
+    }
+
+    .admin-layout {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .preview-panel {
+        position: static !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+
+    .proposal-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+
+    .sheet-services-list,
+    .sheet-client-card,
+    .sheet-price-table,
+    .sheet-clauses {
+        page-break-inside: avoid;
+    }
+}
+
+/* Responsividad en Pantalla */
+@media (max-width: 1100px) {
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-panel {
+        position: static;
+        max-height: none;
+    }
+}
