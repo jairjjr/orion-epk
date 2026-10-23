@@ -273,152 +273,180 @@
         <div class="preview-panel">
             <article class="proposal-sheet" id="proposal-document">
 
-                <!-- Encabezado Membretado -->
-                <header class="sheet-header">
-                    <div class="sheet-logo-wrap">
-                        <img src="media/brand/Logo-Orion-master.png" alt="Orion Live Band logo">
-                        <div style="font-size: 0.72rem; color: #4B5563; margin-top: 0.4rem; font-weight: 600;">
-                            ORION LIVE BAND · ENTRETENIMIENTO MUSICAL PROFESIONAL<br>
-                            León, Guanajuato, México · Contacto: jairjjr@gmail.com
-                        </div>
-                    </div>
-                    <div class="sheet-meta">
-                        <h1 class="sheet-meta__title">Propuesta de Show</h1>
-                        <div class="sheet-meta__folio" id="doc-folio">COT-20261219-DELDHY</div>
-                        <div class="sheet-meta__date" id="doc-date-issued">Emisión: 23 de Octubre, 2026</div>
-                        <div class="sheet-meta__date" id="doc-validity" style="color: #9CA3AF;">Vigencia: 15 días naturales</div>
-                    </div>
-                </header>
+                    <!-- ====================================================
+                         HOJA 1: CARÁTULA EJECUTIVA & PRODUCCIÓN ARTÍSTICA
+                    ===================================================== -->
+                    <div class="sheet-page sheet-page--1">
+                        <!-- Encabezado Membretado Oficial -->
+                        <header class="sheet-header">
+                            <div class="sheet-logo-wrap">
+                                <img src="media/brand/orion-light.jpeg" alt="Orion Live Band logo" class="sheet-logo-img">
+                                <div class="sheet-brand-sub">
+                                    ORION LIVE BAND · PRODUCCIÓN & ENTRETENIMIENTO EN VIVO<br>
+                                    León, Guanajuato, México · Contacto: jairjjr@gmail.com
+                                </div>
+                            </div>
+                            <div class="sheet-meta">
+                                <h1 class="sheet-meta__title">Propuesta de Show</h1>
+                                <div class="sheet-meta__folio" id="doc-folio">COT-20261219-DELDHY</div>
+                                <div class="sheet-meta__date" id="doc-date-issued">Emisión: 23 de Octubre, 2026</div>
+                                <div class="sheet-meta__validity" id="doc-validity">Vigencia: 15 días naturales</div>
+                            </div>
+                        </header>
 
-                <!-- Ficha del Cliente y Evento -->
-                <section class="sheet-client-card">
-                    <div class="sheet-info-item">
-                        <span class="sheet-info-label">Cliente / Solicitante:</span>
-                        <span class="sheet-info-val" id="doc-client-name">César Quezada</span>
-                    </div>
-                    <div class="sheet-info-item">
-                        <span class="sheet-info-label">Empresa / Razón Social:</span>
-                        <span class="sheet-info-val" id="doc-company-name">DELDHY</span>
-                    </div>
-                    <div class="sheet-info-item">
-                        <span class="sheet-info-label">Tipo de Celebración:</span>
-                        <span class="sheet-info-val" id="doc-event-type">Corporativo / Posada Navideña</span>
-                    </div>
-                    <div class="sheet-info-item">
-                        <span class="sheet-info-label">Fecha del Evento:</span>
-                        <span class="sheet-info-val" id="doc-event-date" style="color: #1E40AF;">Sábado 19 de Diciembre, 2026</span>
-                    </div>
-                    <div class="sheet-info-item">
-                        <span class="sheet-info-label">Horario & Duración:</span>
-                        <span class="sheet-info-val" id="doc-event-time">4:00 PM (3 Horas / 2 Sets)</span>
-                    </div>
-                    <div class="sheet-info-item">
-                        <span class="sheet-info-label">Ubicación / Recinto:</span>
-                        <span class="sheet-info-val" id="doc-event-location">San Francisco del Rincón, Gto.</span>
-                    </div>
-                    <div class="sheet-info-item">
-                        <span class="sheet-info-label">Aforo Estimado:</span>
-                        <span class="sheet-info-val" id="doc-event-guests">125 a 150 personas</span>
-                    </div>
-                    <div class="sheet-info-item">
-                        <span class="sheet-info-label">Teléfono de Contacto:</span>
-                        <span class="sheet-info-val" id="doc-client-phone">476 111 3333</span>
-                    </div>
-                </section>
+                        <!-- Ficha del Cliente y Evento -->
+                        <section class="sheet-client-card">
+                            <div class="sheet-info-item">
+                                <span class="sheet-info-label">Cliente / Solicitante:</span>
+                                <span class="sheet-info-val" id="doc-client-name">César Quezada</span>
+                            </div>
+                            <div class="sheet-info-item">
+                                <span class="sheet-info-label">Empresa / Razón Social:</span>
+                                <span class="sheet-info-val" id="doc-company-name">DELDHY</span>
+                            </div>
+                            <div class="sheet-info-item">
+                                <span class="sheet-info-label">Tipo de Celebración:</span>
+                                <span class="sheet-info-val" id="doc-event-type">Corporativo / Posada Navideña</span>
+                            </div>
+                            <div class="sheet-info-item">
+                                <span class="sheet-info-label">Fecha del Evento:</span>
+                                <span class="sheet-info-val sheet-info-val--highlight" id="doc-event-date">Sábado 19 de Diciembre, 2026</span>
+                            </div>
+                            <div class="sheet-info-item">
+                                <span class="sheet-info-label">Horario & Duración:</span>
+                                <span class="sheet-info-val" id="doc-event-time">4:00 PM (3 Horas / 2 Sets)</span>
+                            </div>
+                            <div class="sheet-info-item">
+                                <span class="sheet-info-label">Ubicación / Recinto:</span>
+                                <span class="sheet-info-val" id="doc-event-location">San Francisco del Rincón, Gto.</span>
+                            </div>
+                            <div class="sheet-info-item">
+                                <span class="sheet-info-label">Aforo Estimado:</span>
+                                <span class="sheet-info-val" id="doc-event-guests">125 a 150 personas</span>
+                            </div>
+                            <div class="sheet-info-item">
+                                <span class="sheet-info-label">Teléfono de Contacto:</span>
+                                <span class="sheet-info-val" id="doc-client-phone">476 111 3333</span>
+                            </div>
+                        </section>
 
-                <!-- Alcance del Servicio (Servicios Incluidos) -->
-                <section class="sheet-section">
-                    <h2 class="sheet-section__title">Alcance de la Producción Artística y Técnica</h2>
-                    <ul class="sheet-services-list" id="doc-services-list">
-                        <!-- Generado dinámicamente -->
-                    </ul>
-                </section>
+                        <!-- Alcance de la Producción Artística y Técnica -->
+                        <section class="sheet-section sheet-section--grow">
+                            <h2 class="sheet-section__title">Alcance de la Producción Artística y Técnica</h2>
+                            <ul class="sheet-services-list" id="doc-services-list">
+                                <!-- Generado dinámicamente -->
+                            </ul>
+                        </section>
 
-                <!-- Desglose de Inversión Económica -->
-                <section class="sheet-section">
-                    <h2 class="sheet-section__title">Inversión Económica y Condiciones de Pago</h2>
-                    <table class="sheet-price-table">
-                        <thead>
-                            <tr>
-                                <th>Concepto</th>
-                                <th style="text-align: center;">Término / Condición</th>
-                                <th style="text-align: right;">Importe</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <strong>Presentación Musical en Vivo Orion Live Band</strong><br>
-                                    <span style="font-size: 0.78rem; color: #6B7280;">Incluye alineación de 4 músicos en vivo (Voz femenina, Guitarra y voz, Bajo, Batería), sistema de audio PA profesional, staff e iluminación.</span>
-                                </td>
-                                <td style="text-align: center;" id="doc-table-duration">3 Horas / 2 Sets</td>
-                                <td class="col-total" id="doc-price-total">$32,000 MXN</td>
-                            </tr>
-                            <tr style="background: #F9FAFB;">
-                                <td colspan="2">
-                                    <strong>1. Anticipo para Apartar y Agendar Fecha (40%):</strong><br>
-                                    <span style="font-size: 0.75rem; color: #6B7280;">Al confirmar la contratación para bloquear la fecha en calendario oficial.</span>
-                                </td>
-                                <td style="text-align: right; font-weight: 700; color: #1E40AF;" id="doc-pay1-amount">$12,800 MXN</td>
-                            </tr>
-                            <tr style="background: #FFFFFF;">
-                                <td colspan="2">
-                                    <strong>2. Segundo Pago Intermedio (30%):</strong><br>
-                                    <span style="font-size: 0.75rem; color: #6B7280;">A liquidarse una (1) semana antes de la fecha del evento.</span>
-                                </td>
-                                <td style="text-align: right; font-weight: 700; color: #111827;" id="doc-pay2-amount">$9,600 MXN</td>
-                            </tr>
-                            <tr style="background: #F9FAFB;">
-                                <td colspan="2">
-                                    <strong>3. Saldo Final (30%):</strong><br>
-                                    <span style="font-size: 0.75rem; color: #6B7280;">El día del evento, al término del montaje y soundcheck (previo a iniciar el show).</span>
-                                </td>
-                                <td style="text-align: right; font-weight: 700; color: #111827;" id="doc-pay3-amount">$9,600 MXN</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-
-                <!-- Rider Técnico y Cláusulas -->
-                <section class="sheet-section">
-                    <h2 class="sheet-section__title">Requerimientos Técnicos y Cláusulas Operativas</h2>
-                    <div class="sheet-clauses">
-                        <div class="clause-item" id="doc-clause-electric">
-                            <strong>1. Requerimiento Eléctrico (Tomas 110V):</strong>
-                            <span>Dos (2) tomas independientes a 110V (15A audio PA, 6A backline).</span>
-                        </div>
-                        <div class="clause-item" id="doc-clause-stage">
-                            <strong>2. Escenario y Protección:</strong>
-                            <span>Área mínima 5.0m x 4.0m firme y techada obligatoriamente en exterior.</span>
-                        </div>
-                        <div class="clause-item" id="doc-clause-logistics">
-                            <strong>3. Montaje y Pruebas:</strong>
-                            <span>Acceso 2 horas antes para montaje y soundcheck.</span>
-                        </div>
-                        <div class="clause-item" id="doc-clause-terms">
-                            <strong>4. Reserva y Vigencia:</strong>
-                            <span>Fecha agendada con 40% de anticipo, 30% 1 semana antes y 30% el día del evento. Vigencia: 15 días.</span>
+                        <!-- Pie de la Hoja 1 -->
+                        <div class="sheet-page-turner">
+                            <span>Orion Live Band · Propuesta Oficial de Show</span>
+                            <span>Página 1 de 2 · Continúa en Hoja 2 (Inversión & Términos) ➔</span>
                         </div>
                     </div>
-                </section>
 
-                <!-- Pie de Página con Firmas -->
-                <footer class="sheet-footer">
-                    <div>
-                        <strong>Orion Live Band</strong> · Representación Artística<br>
-                        León, Gto. · Tel: (477) 179-7700
+                    <!-- ====================================================
+                         HOJA 2: INVERSIÓN ECONÓMICA, RIDER & FORMALIZACIÓN
+                    ===================================================== -->
+                    <div class="sheet-page sheet-page--2">
+                        <!-- Encabezado de Continuación (Hoja 2) -->
+                        <header class="sheet-header-p2">
+                            <div class="sheet-logo-mini">
+                                <img src="media/brand/orion-light.jpeg" alt="Orion Live Band logo">
+                                <span>ORION LIVE BAND · CONDICIONES ECONÓMICAS Y TÉCNICAS</span>
+                            </div>
+                            <div class="sheet-folio-p2" id="doc-folio-p2">COT-20261219-DELDHY</div>
+                        </header>
+
+                        <!-- Desglose de Inversión Económica (40% / 30% / 30%) -->
+                        <section class="sheet-section">
+                            <h2 class="sheet-section__title">Inversión Económica y Condiciones de Pago</h2>
+                            <table class="sheet-price-table">
+                                <thead>
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th style="text-align: center;">Término / Condición</th>
+                                        <th style="text-align: right;">Importe</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <strong>Presentación Musical en Vivo Orion Live Band</strong><br>
+                                            <span style="font-size: 0.76rem; color: #64748B;">Alineación de 4 músicos profesionales en vivo (Voz líder femenina, Guitarra y voz, Bajo, Batería), sistema de audio PA profesional, staff e iluminación.</span>
+                                        </td>
+                                        <td style="text-align: center; font-weight: 600;" id="doc-table-duration">3 Horas / 2 Sets</td>
+                                        <td class="col-total" id="doc-price-total">$32,000 MXN</td>
+                                    </tr>
+                                    <tr style="background: #F8FAFC;">
+                                        <td colspan="2">
+                                            <strong>1. Anticipo para Apartar y Agendar Fecha (40%):</strong><br>
+                                            <span style="font-size: 0.74rem; color: #64748B;">Al confirmar la contratación para bloquear la fecha en calendario oficial.</span>
+                                        </td>
+                                        <td style="text-align: right; font-weight: 700; color: #1E40AF;" id="doc-pay1-amount">$12,800 MXN</td>
+                                    </tr>
+                                    <tr style="background: #FFFFFF;">
+                                        <td colspan="2">
+                                            <strong>2. Segundo Pago Intermedio (30%):</strong><br>
+                                            <span style="font-size: 0.74rem; color: #64748B;">A liquidarse una (1) semana antes de la fecha del evento.</span>
+                                        </td>
+                                        <td style="text-align: right; font-weight: 700; color: #0F172A;" id="doc-pay2-amount">$9,600 MXN</td>
+                                    </tr>
+                                    <tr style="background: #F8FAFC;">
+                                        <td colspan="2">
+                                            <strong>3. Saldo Final (30%):</strong><br>
+                                            <span style="font-size: 0.74rem; color: #64748B;">El día del evento, al término del montaje y soundcheck (previo a iniciar el show).</span>
+                                        </td>
+                                        <td style="text-align: right; font-weight: 700; color: #0F172A;" id="doc-pay3-amount">$9,600 MXN</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="sheet-tax-note">
+                                * Precios expresados en Moneda Nacional (MXN). En caso de requerir Comprobante Fiscal Digital (CFDI), se adicionará el 16% de I.V.A.
+                            </div>
+                        </section>
+
+                        <!-- Rider Técnico y Cláusulas Operativas -->
+                        <section class="sheet-section">
+                            <h2 class="sheet-section__title">Requerimientos Técnicos y Cláusulas Operativas (México)</h2>
+                            <div class="sheet-clauses">
+                                <div class="clause-item" id="doc-clause-electric">
+                                    <strong>1. Requerimiento Eléctrico (Tomas 110V):</strong>
+                                    <span>Dos (2) tomas independientes a 110V (15A audio PA, 6A backline).</span>
+                                </div>
+                                <div class="clause-item" id="doc-clause-stage">
+                                    <strong>2. Escenario y Protección:</strong>
+                                    <span>Área mínima 5.0m x 4.0m firme y techada obligatoriamente en exterior.</span>
+                                </div>
+                                <div class="clause-item" id="doc-clause-logistics">
+                                    <strong>3. Montaje y Pruebas:</strong>
+                                    <span>Acceso 2 horas antes para montaje y soundcheck.</span>
+                                </div>
+                                <div class="clause-item" id="doc-clause-terms">
+                                    <strong>4. Reserva y Vigencia:</strong>
+                                    <span>Fecha agendada con 40% de anticipo, 30% 1 semana antes y 30% el día del evento. Vigencia: 15 días.</span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Pie de Página con Firmas -->
+                        <footer class="sheet-footer">
+                            <div class="sheet-footer-contact">
+                                <strong>Orion Live Band</strong> · Representación Artística Oficial<br>
+                                León, Gto. · Tel: (477) 179-7700 · Web: <a href="https://jairjjr.github.io/orion-epk" target="_blank" style="color: #2563EB; text-decoration: none;">jairjjr.github.io/orion-epk</a>
+                            </div>
+                            <div class="sheet-signatures">
+                                <div class="signature-box">
+                                    Jair Jaimez<br>
+                                    <strong>Director / Orión</strong>
+                                </div>
+                                <div class="signature-box">
+                                    <span id="doc-sign-client">César Quezada</span><br>
+                                    <strong>Aceptación del Cliente</strong>
+                                </div>
+                            </div>
+                        </footer>
                     </div>
-                    <div class="sheet-signatures">
-                        <div class="signature-box">
-                            Jair Jaimez<br>
-                            <strong>Director / Orión</strong>
-                        </div>
-                        <div class="signature-box">
-                            <span id="doc-sign-client">César Quezada</span><br>
-                            <strong>Aceptación del Cliente</strong>
-                        </div>
-                    </div>
-                </footer>
 
             </article>
         </div>

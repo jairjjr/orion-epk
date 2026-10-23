@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Documento Preview Elements
     const docFolio           = document.getElementById('doc-folio');
+    const docFolioP2         = document.getElementById('doc-folio-p2');
     const docValidity        = document.getElementById('doc-validity');
     const docClientName      = document.getElementById('doc-client-name');
     const docCompanyName     = document.getElementById('doc-company-name');
@@ -101,7 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function updatePreview() {
         updateEconomics();
 
-        docFolio.textContent        = inputFolio.value || 'COT-ORION';
+        const currentFolio = inputFolio.value || 'COT-ORION';
+        docFolio.textContent        = currentFolio;
+        if (docFolioP2) docFolioP2.textContent = currentFolio;
         docValidity.textContent     = 'Vigencia: ' + (inputValidity.value || '15 días');
         docClientName.textContent   = inputClientName.value || 'Cliente';
         docCompanyName.textContent  = inputCompanyName.value || 'Particular';

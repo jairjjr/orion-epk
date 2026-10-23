@@ -318,32 +318,65 @@ body.admin-body {
     padding-right: 0.5rem;
 }
 
-/* Hoja Formal Membretada */
+/* Contenedor de Propuesta (Renderizado en pantalla como 2 hojas ejecutivas) */
 .proposal-sheet {
-    background: #FFFFFF;
-    color: #111827;
-    border-radius: 12px;
-    padding: 3rem 2.75rem;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
     position: relative;
-    font-size: 0.875rem;
-    line-height: 1.5;
 }
 
-/* Encabezado de la Hoja */
+/* Hoja Individual Formal (Hoja 1 y Hoja 2) */
+.sheet-page {
+    background: #FFFFFF;
+    color: #0F172A;
+    border-radius: 12px;
+    padding: 2.25rem 2.25rem 1.75rem 2.25rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    box-sizing: border-box;
+}
+
+/* Separador visual entre páginas en pantalla */
+.sheet-page-turner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed #CBD5E1;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #64748B;
+    letter-spacing: 0.02em;
+}
+
+/* Encabezado Principal (Hoja 1) */
 .sheet-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: 2px solid #E5E7EB;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.75rem;
+    border-bottom: 2px solid #E2E8F0;
+    padding-bottom: 1.15rem;
+    margin-bottom: 1.25rem;
 }
 
-.sheet-logo-wrap img {
-    height: 48px;
+.sheet-logo-wrap .sheet-logo-img {
+    height: 38px;
     width: auto;
-    filter: invert(1); /* Fondo blanco -> logo oscuro */
+    display: block;
+    object-fit: contain;
+    filter: none !important;
+}
+
+.sheet-brand-sub {
+    font-size: 0.68rem;
+    color: #475569;
+    margin-top: 0.35rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .sheet-meta {
@@ -351,36 +384,78 @@ body.admin-body {
 }
 
 .sheet-meta__title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 800;
-    color: #111827;
+    color: #0F172A;
     letter-spacing: -0.01em;
     text-transform: uppercase;
 }
 
 .sheet-meta__folio {
-    font-size: 0.875rem;
-    font-weight: 700;
+    font-size: 0.8125rem;
+    font-weight: 800;
     color: #2563EB;
-    margin-top: 0.25rem;
+    margin-top: 0.2rem;
+    letter-spacing: 0.03em;
 }
 
 .sheet-meta__date {
-    font-size: 0.78rem;
-    color: #6B7280;
-    margin-top: 0.25rem;
+    font-size: 0.72rem;
+    color: #64748B;
+    margin-top: 0.15rem;
 }
 
-/* Ficha del Cliente */
+.sheet-meta__validity {
+    font-size: 0.72rem;
+    color: #94A3B8;
+    margin-top: 0.15rem;
+}
+
+/* Encabezado Secundario de Continuación (Hoja 2) */
+.sheet-header-p2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #E2E8F0;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.15rem;
+}
+
+.sheet-logo-mini {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.sheet-logo-mini img {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+}
+
+.sheet-logo-mini span {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #475569;
+}
+
+.sheet-folio-p2 {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #2563EB;
+}
+
+/* Ficha del Cliente y Evento */
 .sheet-client-card {
-    background: #F9FAFB;
-    border: 1px solid #E5E7EB;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
     border-radius: 8px;
-    padding: 1rem 1.25rem;
-    margin-bottom: 1.75rem;
+    padding: 0.85rem 1.15rem;
+    margin-bottom: 1.25rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    gap: 0.6rem 1rem;
 }
 
 .sheet-info-item {
@@ -389,33 +464,41 @@ body.admin-body {
 }
 
 .sheet-info-label {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
     font-weight: 700;
-    color: #6B7280;
+    color: #64748B;
     letter-spacing: 0.05em;
 }
 
 .sheet-info-val {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 700;
-    color: #111827;
+    color: #0F172A;
+}
+
+.sheet-info-val--highlight {
+    color: #1E40AF;
 }
 
 /* Secciones de la Hoja */
 .sheet-section {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.sheet-section--grow {
+    flex-grow: 1;
 }
 
 .sheet-section__title {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 800;
-    color: #111827;
+    color: #0F172A;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     border-left: 3px solid #2563EB;
-    padding-left: 0.6rem;
-    margin-bottom: 0.85rem;
+    padding-left: 0.55rem;
+    margin-bottom: 0.65rem;
 }
 
 /* Lista de Servicios Incluidos */
@@ -423,19 +506,20 @@ body.admin-body {
     list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.6rem 1rem;
+    gap: 0.45rem 1rem;
 }
 
 .sheet-service-item {
     display: flex;
     align-items: flex-start;
-    gap: 0.5rem;
-    font-size: 0.8125rem;
-    color: #374151;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    color: #334155;
+    line-height: 1.35;
 }
 
 .sheet-service-item svg {
-    color: #10B981;
+    color: #059669;
     flex-shrink: 0;
     margin-top: 0.15rem;
 }
@@ -444,93 +528,100 @@ body.admin-body {
 .sheet-price-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 0.5rem;
-    border: 1px solid #E5E7EB;
+    margin-top: 0.35rem;
+    border: 1px solid #E2E8F0;
     border-radius: 8px;
     overflow: hidden;
 }
 
 .sheet-price-table th {
-    background: #F3F4F6;
-    padding: 0.75rem 1rem;
-    font-size: 0.75rem;
+    background: #F1F5F9;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    color: #4B5563;
+    color: #475569;
     text-align: left;
     font-weight: 700;
+    letter-spacing: 0.03em;
 }
 
 .sheet-price-table td {
-    padding: 0.85rem 1rem;
-    border-top: 1px solid #E5E7EB;
-    font-size: 0.875rem;
+    padding: 0.65rem 0.85rem;
+    border-top: 1px solid #E2E8F0;
+    font-size: 0.8125rem;
 }
 
 .sheet-price-table .col-total {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 800;
-    color: #111827;
+    color: #0F172A;
     text-align: right;
 }
 
-.sheet-payment-box {
-    background: #EFF6FF;
-    border: 1px solid #BFDBFE;
-    border-radius: 8px;
-    padding: 0.85rem 1rem;
-    margin-top: 0.85rem;
-    font-size: 0.78rem;
-    color: #1E40AF;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Nota Fiscal de IVA */
+.sheet-tax-note {
+    font-size: 0.7rem;
+    color: #64748B;
+    margin-top: 0.4rem;
+    font-style: italic;
+    letter-spacing: 0.01em;
 }
 
 /* Cláusulas Técnicas */
 .sheet-clauses {
-    background: #F9FAFB;
-    border: 1px solid #E5E7EB;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
     border-radius: 8px;
-    padding: 1rem 1.25rem;
-    font-size: 0.78rem;
-    color: #4B5563;
-    line-height: 1.6;
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    color: #334155;
+    line-height: 1.45;
 }
 
 .clause-item {
-    margin-bottom: 0.65rem;
-}
-
-.clause-item strong {
-    color: #111827;
+    margin-bottom: 0.45rem;
 }
 
 .clause-item:last-child {
     margin-bottom: 0;
 }
 
-/* Pie de Hoja / Firma */
+.clause-item strong {
+    color: #0F172A;
+}
+
+/* Pie de Hoja / Firmas */
 .sheet-footer {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #E5E7EB;
+    margin-top: 1.25rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid #E2E8F0;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    font-size: 0.75rem;
-    color: #6B7280;
+    font-size: 0.72rem;
+    color: #64748B;
+}
+
+.sheet-footer-contact strong {
+    color: #0F172A;
 }
 
 .sheet-signatures {
     display: flex;
-    gap: 3rem;
+    gap: 2.25rem;
 }
 
 .signature-box {
     text-align: center;
-    width: 180px;
-    border-top: 1px solid #9CA3AF;
-    padding-top: 0.4rem;
+    width: 160px;
+    border-top: 1.5px solid #64748B;
+    padding-top: 0.35rem;
+    font-size: 0.74rem;
+}
+
+.signature-box strong {
+    color: #0F172A;
+    font-size: 0.72rem;
 }
 
 /* Toast de Notificación */
@@ -559,24 +650,30 @@ body.admin-body {
 
 /* ========================================================================
    REGLAS DE IMPRESIÓN Y PDF (@media print)
-   Impresión limpia tamaño Carta, sin elementos de la interfaz web
+   Estructura fija en EXACTAMENTE 2 HOJAS (Letter Portrait)
    ======================================================================== */
 @media print {
     @page {
         size: letter portrait;
-        margin: 1.5cm;
+        margin: 1.0cm 1.3cm 1.0cm 1.3cm;
+    }
+
+    *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
     body.admin-body {
         background: #FFFFFF !important;
-        color: #111827 !important;
+        color: #0F172A !important;
     }
 
     /* Ocultar barra superior, panel de edición, botones y toasters */
     .admin-navbar,
     .editor-panel,
     .admin-actions,
-    .toast-msg {
+    .toast-msg,
+    .sheet-page-turner {
         display: none !important;
     }
 
@@ -598,16 +695,53 @@ body.admin-body {
         box-shadow: none !important;
         border: none !important;
         padding: 0 !important;
-        border-radius: 0 !important;
-        page-break-after: avoid;
-        page-break-inside: avoid;
+        margin: 0 !important;
+        display: block !important;
+        background: transparent !important;
     }
 
-    .sheet-services-list,
-    .sheet-client-card,
+    .sheet-page {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* HOJA 1: Forzada a 1 sola página exacta */
+    .sheet-page--1 {
+        page-break-before: auto !important;
+        break-before: auto !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        height: 25.8cm !important;
+        max-height: 25.8cm !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    /* HOJA 2: Forzada a 1 sola página exacta (Fin del documento) */
+    .sheet-page--2 {
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        height: 25.8cm !important;
+        max-height: 25.8cm !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
     .sheet-price-table,
-    .sheet-clauses {
-        page-break-inside: avoid;
+    .sheet-clauses,
+    .sheet-footer {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
     }
 }
 
