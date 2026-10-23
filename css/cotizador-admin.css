@@ -655,7 +655,7 @@ body.admin-body {
 @media print {
     @page {
         size: letter portrait;
-        margin: 1.0cm 1.3cm 1.0cm 1.3cm;
+        margin: 0.8cm 1.2cm 0.8cm 1.2cm;
     }
 
     *, *::before, *::after {
@@ -706,35 +706,68 @@ body.admin-body {
         border-radius: 0 !important;
         padding: 0 !important;
         margin: 0 !important;
+        background: #FFFFFF !important;
         box-sizing: border-box !important;
     }
 
-    /* HOJA 1: Forzada a 1 sola página exacta */
+    /* HOJA 1: Salto de página limpio al final */
     .sheet-page--1 {
         page-break-before: auto !important;
         break-before: auto !important;
         page-break-after: always !important;
         break-after: page !important;
-        height: 25.8cm !important;
-        max-height: 25.8cm !important;
-        overflow: hidden !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
     }
 
-    /* HOJA 2: Forzada a 1 sola página exacta (Fin del documento) */
+    /* HOJA 2: Comienza en página 2 sin salto doble ni desbordes */
     .sheet-page--2 {
-        page-break-before: always !important;
-        break-before: page !important;
+        page-break-before: auto !important;
+        break-before: auto !important;
         page-break-after: avoid !important;
         break-after: avoid !important;
-        height: 25.8cm !important;
-        max-height: 25.8cm !important;
-        overflow: hidden !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    /* Ajustes milimétricos en Hoja 2 para garantizar cero derrames hacia una Pág 3 */
+    .sheet-header-p2 {
+        margin-bottom: 0.65rem !important;
+        padding-bottom: 0.45rem !important;
+    }
+
+    .sheet-section {
+        margin-bottom: 0.75rem !important;
+    }
+
+    .sheet-section__title {
+        margin-bottom: 0.4rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    .sheet-price-table th {
+        padding: 0.35rem 0.6rem !important;
+        font-size: 0.68rem !important;
+    }
+
+    .sheet-price-table td {
+        padding: 0.4rem 0.6rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    .sheet-clauses {
+        padding: 0.55rem 0.8rem !important;
+        font-size: 0.71rem !important;
+        line-height: 1.38 !important;
+    }
+
+    .clause-item {
+        margin-bottom: 0.3rem !important;
+    }
+
+    .sheet-footer {
+        margin-top: 0.75rem !important;
+        padding-top: 0.55rem !important;
     }
 
     .sheet-price-table,
