@@ -1322,6 +1322,26 @@ p {
     line-height: 1.6;
 }
 
+.quote-reassurance {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.85rem auto 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-accent-glow);
+    letter-spacing: 0.04em;
+    text-align: center;
+    width: 100%;
+}
+
+.reassurance-icon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
 /* Secciones del Formulario */
 .form-section {
     background: var(--color-bg-card);
@@ -1771,9 +1791,23 @@ p {
 }
 
 .form-disclaimer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
     font-size: 0.8125rem;
     color: var(--color-text-muted);
-    margin-top: 1rem;
+    margin: 1.15rem auto 0;
+    max-width: 520px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.disclaimer-icon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    flex-shrink: 0;
 }
 
 /* Pantalla de Éxito / Confirmación */
@@ -1930,6 +1964,32 @@ p {
 
 .nav-cta-link::after {
     display: none !important;
+}
+
+/* Footer Específico del Cotizador (Grid Maestro de 860px) */
+.quote-footer {
+    width: 100%;
+    padding: 2.25rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(3, 5, 8, 0.85);
+    position: relative;
+    z-index: 1;
+}
+
+.quote-footer__inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.quote-footer__inner p {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    text-align: center;
 }
 
 /* Adaptabilidad Responsiva Integral para el Cotizador */
