@@ -35,7 +35,7 @@
         var rawText = taglineEl.textContent.trim();
         var words = rawText.split(/\s+/);
         taglineEl.innerHTML = words.map(function (w) {
-            var isHighlight = /gente|música|sentarse|secreto/i.test(w);
+            var isHighlight = /gente|música|secreto/i.test(w);
             return '<span class="tagline-word' + (isHighlight ? ' highlight' : '') + '">' + w + '</span>';
         }).join(' ');
 
@@ -87,32 +87,5 @@
 
         marqueeObserver.observe(marqueeContainer);
     }
-
-    // 4. Acordeón Interactivo de FAQ (Accesibilidad con aria-expanded)
-    var faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var item = btn.closest('.faq-item');
-            var isOpen = item.classList.contains('is-open');
-
-            // Cerrar otros acordeones si se desea comportamiento único
-            document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
-                if (openItem !== item) {
-                    openItem.classList.remove('is-open');
-                    var openBtn = openItem.querySelector('.faq-question');
-                    if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
-                }
-            });
-
-            // Conmutar el seleccionado
-            if (isOpen) {
-                item.classList.remove('is-open');
-                btn.setAttribute('aria-expanded', 'false');
-            } else {
-                item.classList.add('is-open');
-                btn.setAttribute('aria-expanded', 'true');
-            }
-        });
-    });
 
 })();
