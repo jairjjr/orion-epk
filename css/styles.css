@@ -1234,7 +1234,7 @@ p {
 }
 
 .quote-header__inner {
-    max-width: 960px;
+    max-width: 860px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -1268,15 +1268,20 @@ p {
     transform: translateX(-3px);
 }
 
-/* Contenedor Principal */
+/* Contenedor Principal (Centrado de Precisión Gestalt) */
 .quote-main {
     flex: 1;
     position: relative;
     z-index: 1;
     padding: 3rem 1.5rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .quote-container {
+    width: 100%;
     max-width: 860px;
     margin: 0 auto;
 }
@@ -1659,10 +1664,11 @@ p {
     cursor: default;
 }
 
-/* Chips de Aforo */
+/* Chips de Aforo (Centrado Armónico Gestalt) */
 .chips-grid {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
 }
 
@@ -2156,15 +2162,18 @@ p {
 .stepper-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.65rem 0.85rem;
+    justify-content: center;
+    text-align: center;
+    gap: 0.55rem;
+    padding: 0.7rem 0.85rem;
     background: rgba(6, 10, 16, 0.7);
     border: 1px solid var(--glass-border);
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--color-text-muted);
-    transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .stepper-item.is-active {
@@ -2208,7 +2217,7 @@ p {
     border-radius: 16px;
     padding: 1.35rem 1.5rem;
     margin-bottom: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(121, 192, 255, 0.15);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 20px rgba(121, 192, 255, 0.12);
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(14px);
@@ -2270,6 +2279,8 @@ p {
 .live-ticket__item {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 0.25rem;
 }
 
