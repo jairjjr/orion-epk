@@ -28,13 +28,149 @@ document.addEventListener('DOMContentLoaded', () => {
     const summaryDetails = document.getElementById('summary-details');
     const whatsappSummaryBtn = document.getElementById('whatsapp-summary-btn');
 
-    // 2. Restricción de Fecha mínima (Hoy)
+    // Elementos del Live Show Ticket (Ficha Técnica sin Precios)
+    const ticketEvent = document.getElementById('ticket-event');
+    const ticketDate = document.getElementById('ticket-date');
+    const ticketTime = document.getElementById('ticket-time');
+    const ticketGuests = document.getElementById('ticket-guests');
+    const ticketAudio = document.getElementById('ticket-audio');
+    const ticketStatusBadge = document.getElementById('ticket-status-badge');
+    const specialSongInput = document.getElementById('special-song');
+    const clientNameInput = document.getElementById('client-name');
+    const clientPhoneInput = document.getElementById('client-phone');
+    const clientEmailInput = document.getElementById('client-email');
+
+    // Función de micro-interacción táctil en valores del ticket
+    function flashValue(el) {
+        if (!el) return;
+        el.classList.add('is-updated');
+        setTimeout(() => el.classList.remove('is-updated'), 350);
+    }
+
+    // Función Reactiva: Actualizar Ticket y Stepper en Tiempo Real
+    function updateTicketAndStepper() {
+        // 1. Tipo de Celebración
+        const checkedTipo = document.querySelector('input[name="tipo_evento"]:checked');
+        if (ticketEvent) {
+            if (checkedTipo) {
+                ticketEvent.textContent = checkedTipo.value.split('/')[0].trim();
+                flashValue(ticketEvent);
+            } else {
+                ticketEvent.textContent = 'Por definir';
+            }
+        }
+
+        // 2. Fecha Tentativa
+        if (ticketDate) {
+            if (eventDateInput && eventDateInput.value) {
+                const parts = eventDateInput.value.split('-');
+                if (parts.length === 3) {
+                    const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+                    const mes = meses[parseInt(parts[1], 10) - 1] || parts[1];
+                    ticketDate.textContent = `${parts[2]} ${mes} ${parts[0]}`;
+                } else {
+                    ticketDate.textContent = eventDateInput.value;
+                }
+                flashValue(ticketDate);
+            } else {
+                ticketDate.textContent = 'Por elegir';
+            }
+        }
+
+        // 3. Horario & Duración
+        if (ticketTime) {
+            const timeVal = eventTimeInput ? eventTimeInput.value : '20:00';
+            const durVal = durationInput ? durationInput.value.split('(')[0].trim() : '3 Horas';
+            ticketTime.textContent = `${timeVal} · ${durVal}`;
+            flashValue(ticketTime);
+        }
+
+        // 4. Aforo Estimado
+        if (ticketGuests && guestsInput) {
+            ticketGuests.textContent = guestsInput.value || '100 a 125 personas';
+            flashValue(ticketGuests);
+        }
+
+        // 5. Audio / PA
+        const checkedAudio = document.querySelector('input[name="sistema_audio"]:checked');
+        if (ticketAudio) {
+            if (checkedAudio) {
+                const val = checkedAudio.value;
+                if (val.includes('lleve equipo') || val.includes('lleva el PA')) {
+                    ticketAudio.textContent = 'PA de Orion';
+                } else if (val.includes('recinto ya cuenta') || val.includes('tiene PA')) {
+                    ticketAudio.textContent = 'PA del recinto';
+                } else {
+                    ticketAudio.textContent = 'Por asesorar';
+                }
+                flashValue(ticketAudio);
+            } else {
+                ticketAudio.textContent = 'Por definir';
+            }
+        }
+
+        // 6. Sincronización del Stepper de 4 Pasos
+        const step1 = document.getElementById('step-nav-1');
+        const step2 = document.getElementById('step-nav-2');
+        const step3 = document.getElementById('step-nav-3');
+        const step4 = document.getElementById('step-nav-4');
+
+        if (step1) {
+            if (eventDateInput && eventDateInput.value && checkedTipo) {
+                step1.classList.add('is-completed');
+            } else {
+                step1.classList.remove('is-completed');
+            }
+        }
+
+        if (step2) {
+            const checkedEspacio = document.querySelector('input[name="tipo_espacio"]:checked');
+            if (guestsInput && guestsInput.value && checkedEspacio && checkedAudio) {
+                step2.classList.add('is-completed');
+            } else {
+                step2.classList.remove('is-completed');
+            }
+        }
+
+        if (step3) {
+            if (specialSongInput && specialSongInput.value.trim().length > 0) {
+                step3.classList.add('is-completed');
+            }
+        }
+
+        if (step4) {
+            if (clientNameInput && clientNameInput.value.trim() &&
+                clientPhoneInput && clientPhoneInput.value.trim() &&
+                clientEmailInput && clientEmailInput.value.trim()) {
+                step4.classList.add('is-completed');
+            } else {
+                step4.classList.remove('is-completed');
+            }
+        }
+
+        // 7. Estado del Badge en Ticket
+        if (ticketStatusBadge) {
+            const isReady = (step1 && step1.classList.contains('is-completed')) &&
+                            (step2 && step2.classList.contains('is-completed')) &&
+                            (step4 && step4.classList.contains('is-completed'));
+            if (isReady) {
+                ticketStatusBadge.textContent = 'Listo para Enviar';
+                ticketStatusBadge.style.background = 'rgba(121, 192, 255, 0.35)';
+            } else {
+                ticketStatusBadge.textContent = 'Personalizando';
+                ticketStatusBadge.style.background = 'rgba(121, 192, 255, 0.15)';
+            }
+        }
+    }
+
+    // 2. Restricción de Fecha mínima (Hoy) y Listener
     if (eventDateInput) {
         const today = new Date();
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, '0');
         const day = String(today.getDate()).padStart(2, '0');
         eventDateInput.min = `${year}-${month}-${day}`;
+        eventDateInput.addEventListener('change', updateTicketAndStepper);
     }
 
     // 3. Manejo de Presets de Horario
@@ -45,12 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (eventTimeInput) {
                 eventTimeInput.value = btn.getAttribute('data-time');
             }
+            updateTicketAndStepper();
         });
     });
 
     if (eventTimeInput) {
         eventTimeInput.addEventListener('input', () => {
             timePillBtns.forEach(b => b.classList.remove('is-active'));
+            updateTicketAndStepper();
         });
     }
 
@@ -62,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (durationInput) {
                 durationInput.value = chip.getAttribute('data-duration');
             }
+            updateTicketAndStepper();
         });
     });
 
@@ -78,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (guestsBadge) {
                 guestsBadge.textContent = guestStr;
             }
+            updateTicketAndStepper();
         });
     });
 
@@ -96,8 +236,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (input.checked) {
                 card.classList.add('is-checked');
             }
+            updateTicketAndStepper();
         });
     });
+
+    // Listeners de texto para completar Stepper
+    if (specialSongInput) specialSongInput.addEventListener('input', updateTicketAndStepper);
+    if (clientNameInput) clientNameInput.addEventListener('input', updateTicketAndStepper);
+    if (clientPhoneInput) clientPhoneInput.addEventListener('input', updateTicketAndStepper);
+    if (clientEmailInput) clientEmailInput.addEventListener('input', updateTicketAndStepper);
+
+    // Ejecución inicial para sincronizar valores por defecto
+    updateTicketAndStepper();
 
     // 7. Envío Asíncrono del Formulario
     quoteForm.addEventListener('submit', async (e) => {
@@ -107,25 +257,71 @@ document.addEventListener('DOMContentLoaded', () => {
         formErrorMsg.textContent = '';
 
         // Recoger datos
-        const eventDate = eventDateInput.value;
+        const eventDate = eventDateInput ? eventDateInput.value : '';
         const eventTime = eventTimeInput ? eventTimeInput.value : '20:00';
         const eventDuration = durationInput ? durationInput.value : '3 Horas (2 Sets)';
         const tipoEventoInput = document.querySelector('input[name="tipo_evento"]:checked');
         const tipoEspacioInput = document.querySelector('input[name="tipo_espacio"]:checked');
         const sistemaAudioInput = document.querySelector('input[name="sistema_audio"]:checked');
-        const guests = guestsInput.value;
-        const specialSong = document.getElementById('special-song').value.trim();
-        const clientName = document.getElementById('client-name').value.trim();
-        const clientPhone = document.getElementById('client-phone').value.trim();
-        const clientEmail = document.getElementById('client-email').value.trim();
-        const eventCity = document.getElementById('event-city').value.trim();
-        const clientNotes = document.getElementById('client-notes').value.trim();
+        const guests = guestsInput ? guestsInput.value : '100 a 125 personas';
+        const specialSong = specialSongInput ? specialSongInput.value.trim() : '';
+        const clientName = clientNameInput ? clientNameInput.value.trim() : '';
+        const clientPhone = clientPhoneInput ? clientPhoneInput.value.trim() : '';
+        const clientEmail = clientEmailInput ? clientEmailInput.value.trim() : '';
+        const eventCity = document.getElementById('event-city') ? document.getElementById('event-city').value.trim() : '';
+        const clientNotes = document.getElementById('client-notes') ? document.getElementById('client-notes').value.trim() : '';
 
-        // Validaciones requeridas
-        if (!eventDate || !tipoEventoInput || !tipoEspacioInput || !sistemaAudioInput || !clientName || !clientPhone || !clientEmail) {
-            formErrorMsg.textContent = 'Por favor completa todos los campos requeridos marcados con asterisco (*) antes de enviar.';
+        // Validaciones requeridas con scroll suave al primer campo faltante
+        if (!eventDate) {
+            formErrorMsg.textContent = 'Por favor selecciona la fecha tentativa de tu evento.';
             formErrorMsg.style.display = 'block';
-            formErrorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            eventDateInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            eventDateInput.focus();
+            return;
+        }
+
+        if (!tipoEventoInput) {
+            formErrorMsg.textContent = 'Por favor selecciona el tipo de celebración.';
+            formErrorMsg.style.display = 'block';
+            document.querySelector('.option-cards-grid').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
+        if (!tipoEspacioInput) {
+            formErrorMsg.textContent = 'Por favor selecciona si tu espacio es abierto o cerrado.';
+            formErrorMsg.style.display = 'block';
+            document.querySelector('.option-cards-grid--two').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
+        if (!sistemaAudioInput) {
+            formErrorMsg.textContent = 'Por favor indícanos el requerimiento de sonido (PA).';
+            formErrorMsg.style.display = 'block';
+            document.querySelector('.option-cards-grid--three').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
+        if (!clientName) {
+            formErrorMsg.textContent = 'Por favor ingresa tu nombre o el de tu empresa.';
+            formErrorMsg.style.display = 'block';
+            clientNameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            clientNameInput.focus();
+            return;
+        }
+
+        if (!clientPhone) {
+            formErrorMsg.textContent = 'Por favor ingresa tu WhatsApp o teléfono para contactarte.';
+            formErrorMsg.style.display = 'block';
+            clientPhoneInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            clientPhoneInput.focus();
+            return;
+        }
+
+        if (!clientEmail) {
+            formErrorMsg.textContent = 'Por favor ingresa tu correo electrónico para enviarte la propuesta.';
+            formErrorMsg.style.display = 'block';
+            clientEmailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            clientEmailInput.focus();
             return;
         }
 
@@ -250,7 +446,12 @@ Quedo a la espera de la cotización y disponibilidad. ¡Muchas gracias!`;
     // 9. Mostrar Pantalla de Éxito
     function mostrarPantallaExito(data) {
         quoteForm.style.display = 'none';
-        document.querySelector('.quote-intro').style.display = 'none';
+        const intro = document.querySelector('.quote-intro');
+        if (intro) intro.style.display = 'none';
+        const stepper = document.querySelector('.form-stepper');
+        if (stepper) stepper.style.display = 'none';
+        const ticket = document.getElementById('live-ticket');
+        if (ticket) ticket.style.display = 'none';
         quoteSuccess.style.display = 'block';
 
         if (successClientName) {
